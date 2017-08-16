@@ -1,0 +1,32 @@
+#gallery{
+	padding: .5vw;
+	font-size: 0;
+	display: -ms-flexbox;
+	-ms-flex-wrap: wrap;
+	-ms-flex-direction: column;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	display: -webkit-box;
+	display: flex;
+}
+
+#gallery div {
+	-webkit-box-flex: auto;
+	-ms-flex: auto;
+	flex: auto;
+	width: 200px;
+	height:auto;
+	margin: .5vw;
+	background: #FF686B;
+}
+
+#gallery div img{
+	width:100%;
+	height:auto;
+
+}
+
+#gallery div img:hover{
+	opacity: 0.7;
+
+}

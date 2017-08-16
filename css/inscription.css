@@ -1,0 +1,20 @@
+form{
+	width:30vw;
+	margin:auto;
+}
+
+form p{
+	display: inline;
+	font-size: 1.2vw;
+	font-family: verdana;
+}
+
+form input{
+	min-width:5vw;
+}
+
+
+
+.invalid{
+	border-color:red;
+}

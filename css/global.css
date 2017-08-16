@@ -1,0 +1,71 @@
+html, body{
+	width:100vw;
+	height:100vh;
+	margin:0;
+	padding:0;
+}
+
+#center{
+	width:80vw;
+	height:auto;
+	margin:auto;
+	padding:0;
+}
+
+#home{
+	width:50%;
+	margin:auto;
+	display:block;
+}
+
+.text{
+	font-size:1.2vw;
+	font-family: verdana;
+}
+
+h2{
+	font-family: 'Merienda One', cursive;
+	font-size: 2.5vw;
+	margin:0;
+	text-align:center;
+	color: #FF686B;
+}
+
+h3{
+	font-family: 'Merienda One', cursive;
+	font-size: 2.0vw;
+	margin:0;
+	text-align:left;
+	text-decoration : underline;
+	color: #FF686B;
+}
+
+p.text a:hover, p.text a:visited, p.text a{
+	color: #FF686B;
+	font-family: 'Merienda One', cursive;
+	text-decoration: none;
+}
+
+#inscription-ok{
+	width:40vw;
+	height:auto;
+	padding:1vw 2vw;
+	color:white;
+	margin:auto;
+	background-color:#1BBC9B;
+	text-align: center;
+	font-size: 1.2vw;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#inscription-ko{
+	width:40vw;
+	height:auto;
+	padding:1vw 2vw;
+	color:white;
+	margin:auto;
+	background-color:#D64541;
+	text-align: center;
+	font-size: 1.2vw;
+	font-family: 'Open Sans', sans-serif;
+}
