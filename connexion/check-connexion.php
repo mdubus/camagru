@@ -14,6 +14,7 @@ if ($_SESSION['connexion-mail'] == "OK" && $_SESSION['connexion-password'] == "O
 	{
 		$_SESSION['connexion-mail-exists'] = "OK";
 		$infos = connexion_check_password($mail, hash(sha512, $password));
+		$_SESSION['id'] = $infos['id'];
 		$_SESSION['login'] = $infos['login'];
 		$_SESSION['mail'] = $infos['mail'];
 		$_SESSION['groupe'] = $infos['groupe'];

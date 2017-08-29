@@ -22,14 +22,14 @@
 	<div id="center">
 		<h2>Galerie</h2><br/>
 
-	<div id="gallery">
+	<div class="gallery" id="common-gallery">
 <?php
 	$data = get_gallery_data();
-
+// print_r($data);
 	foreach ($data as $key=>$elem)
 	{
 		echo "<div class='photo'>";
-		echo "<a href='#'><img src='".$elem['link']."'></a>";
+		echo "<a href='../montage/photo.php?id_photo=".$elem['id_photo']."'><img src='".$elem['link']."'></a>";
 		echo "</div>";
 
 	}

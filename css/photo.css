@@ -1,0 +1,31 @@
+/* Photo sur laquelle on a cliqué */
+
+#id_photo img{
+	display:block;
+	margin: auto;
+	width:50%;
+}
+
+/* Zone commentaires et like */
+
+#like-and-comment{
+	width:50vw;
+	display: flex
+	margin: auto;
+}
+
+#like{
+	width:10vw;
+	display: block;
+	text-align: center;
+	margin: auto;
+}
+
+#like-img img{
+	width:5vw;
+}
+
+
+#comment{
+	width: 50vw;
+}

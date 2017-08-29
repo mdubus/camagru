@@ -1,0 +1,47 @@
+video{
+	width:100%;
+	height:auto;
+}
+
+#canvas{
+	width:100%;
+	height:auto;
+	display: none;
+}
+
+button{
+	background-color: #FF686B;
+	color:white;
+	font-weight: bold;
+	font-size:1.5vw;
+	font-family: 'Open Sans', sans-serif;
+	padding: 5px;
+	border:2px solid #EE575A;
+	width:30%;
+	height: auto;
+}
+
+button{
+	display: inline;
+	margin: 0 auto;
+}
+
+#camera{
+	width:60%;
+}
+
+#buttons{
+	display: flex;
+}
+
+#reset{
+	display: none;
+}
+
+#save{
+	display: none;
+}
+
+/*#upload{
+	display:none;
+}*/

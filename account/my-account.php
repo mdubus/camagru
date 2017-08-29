@@ -1,5 +1,5 @@
 <?PHP session_start();
-if ($_SESSION['login'] == NULL)
+if ($_SESSION['login'] == NULL || !($_SESSION['login']))
 	echo "<meta http-equiv='refresh' content='0,url=../index.php'>";
 ?>
 <!DOCTYPE html>
@@ -20,14 +20,15 @@ if ($_SESSION['login'] == NULL)
 	$current_page = "my-account";
 	include '../header.php';
 	?>
-	<div id="center">
+	<div class="center">
 		<h2>Bienvenue <?PHP echo $_SESSION['login'];?></h2>
 		<br/><br/>
 		<h3>Statistiques</h3>
-		<p class="text"> Nombre de like sur mes photos : </p>
-		<p class="text"> Ma photo la plus likée : </p><br/>
-		<p class="text"> Nombre de commentaires sur mes photos : </p>
-		<p class="text"> Ma photo la plus commentée : </p><br/>
+		<p class="text"> Nombre de like sur mes montages : </p>
+		<p class="text"> Mon montage le plus liké : </p><br/>
+		<p class="text"> Nombre de commentaires sur mes montages : </p>
+		<p class="text"> Mon montage le plus commenté : </p><br/>
+		<p class="text"><a href="../montage/montages-users.php<?PHP echo '?login='.$_SESSION['login']; ?>"> Voir tous mes montages</a></p><br/><br/>
 
 
 		<p class="text"><a href="suppress-account.php">Je souhaite supprimer mon compte</a></p>

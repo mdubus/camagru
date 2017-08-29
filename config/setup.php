@@ -12,6 +12,9 @@ try {
 	add_users($bdd);
 	create_pictures_table($bdd);
 	add_pictures($bdd);
+	create_likes_table($bdd);
+	add_likes($bdd);
+	create_comments_table($bdd);
 
 
 }
@@ -20,5 +23,5 @@ catch (PDOException $e) {
 	die();
 }
 
-echo "<meta http-equiv='refresh' content='0,url=http://localhost:8080/camagru/index.php'>";
+echo "<meta http-equiv='refresh' content='0,url=../index.php'>";
 ?>

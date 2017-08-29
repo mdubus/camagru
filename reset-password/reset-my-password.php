@@ -18,7 +18,7 @@
 	include '../header.php';
 	$token = $_GET['token'];
 	?>
-	<div id="center">
+	<div class="center">
 		<h2>Réinitialiser mon mot de passe</h2><br/>
 
 		<form method="post" action="check-reset-my-password.php">
@@ -44,7 +44,7 @@
 		include "../errors.php";
 		error_reset_password();
 		if ($_SESSION['reinit-password-in-db'] == "OK")
-			echo "<meta http-equiv='refresh' content='5,url=http://localhost:8080/camagru/index.php'>";
+			echo "<meta http-equiv='refresh' content='5,url=../index.php'>";
 		delete_error_reset_password();
 		?>
 

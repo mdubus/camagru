@@ -3,7 +3,13 @@ form{
 	margin:auto;
 }
 
-form p{
+/*legend{
+	display: inline;
+	font-size: 1.2vw;
+	font-family: verdana;
+}*/
+
+form p, legend, label{
 	display: inline;
 	font-size: 1.2vw;
 	font-family: verdana;

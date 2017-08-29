@@ -192,7 +192,7 @@ function	get_gallery_data()
 		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$bdd->query("USE camagru");
-		$requete = $bdd->prepare("SELECT * FROM `photos`");
+		$requete = $bdd->prepare("SELECT * FROM `photos` ORDER BY `date_upload` DESC");
 		$requete->execute();
 		$data = $requete->fetchAll();
 		return ($data);
@@ -203,5 +203,132 @@ function	get_gallery_data()
 	}
 }
 
+function	get_gallery_user($login)
+{
+	try{
+		include '../config/database.php';
+		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bdd->query("USE camagru");
+		$requete = $bdd->prepare("SELECT * FROM `photos` INNER JOIN `utilisateurs` ON utilisateurs.id = photos.id_user WHERE `login` LIKE :login");
+		$requete->bindParam(':login', $login);
+		$requete->execute();
+		$data = $requete->fetchAll(PDO::FETCH_ASSOC);
+		return ($data);
+	}
+	catch (PDOException $e) {
+		print "Erreur : ".$e->getMessage()."<br/>";
+		die();
+	}
+}
+
+
+// PHOTO
+
+function	get_infos_user_photo($id_photo)
+{
+	try{
+		include '../config/database.php';
+		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bdd->query("USE camagru");
+		$requete = $bdd->prepare("SELECT `link`, `login`, `mail` FROM `photos` INNER JOIN `utilisateurs` ON utilisateurs.id = photos.id_user WHERE `id_photo` LIKE :id_photo");
+		$requete->bindParam(':id_photo', $id_photo);
+		$requete->execute();
+		$data = $requete->fetchAll(PDO::FETCH_ASSOC);
+		return ($data);
+	}
+	catch (PDOException $e) {
+		print "Erreur : ".$e->getMessage()."<br/>";
+		die();
+	}
+}
+
+function	get_nb_likes($id_photo)
+{
+	try{
+		include '../config/database.php';
+		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bdd->query("USE camagru");
+		$requete = $bdd->prepare("SELECT * FROM `likes` WHERE `id_photo`= :id_photo");
+		$requete->bindParam(':id_photo', $id_photo);
+		$requete->execute();
+		$result = $requete->rowCount();
+		return ($result);
+	}
+	catch (PDOException $e) {
+		print "Erreur : ".$e->getMessage()."<br/>";
+		die();
+	}
+}
+
+
+
+function	check_if_already_liked($id_photo, $id)
+{
+	try{
+		include '../config/database.php';
+		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bdd->query("USE camagru");
+		$requete = $bdd->prepare("SELECT * FROM `likes` INNER JOIN `utilisateurs` ON utilisateurs.id = likes.id_user WHERE `id_photo`= :id_photo AND `id_user` = :id_user");
+		$requete->bindParam(':id_photo', $id_photo);
+		$requete->bindParam(':id_user', $id);
+		$requete->execute();
+		$result = $requete->rowCount();
+		return ($result);
+	}
+	catch (PDOException $e) {
+		print "Erreur : ".$e->getMessage()."<br/>";
+		die();
+	}
+}
+
+function	check_if_my_photo($id_photo, $id)
+{
+	try{
+		include '../config/database.php';
+		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bdd->query("USE camagru");
+		$requete = $bdd->prepare("SELECT * FROM `photos` WHERE `id_photo`= :id_photo AND `id_user` = :id_user");
+		$requete->bindParam(':id_photo', $id_photo);
+		$requete->bindParam(':id_user', $id);
+		$requete->execute();
+		$result = $requete->rowCount();
+		return ($result);
+	}
+	catch (PDOException $e) {
+		print "Erreur : ".$e->getMessage()."<br/>";
+		die();
+	}
+}
+
+function	can_i_like_it($id_photo)
+{
+	if (isset($_SESSION['login']))
+	{
+	 $already_liked = check_if_already_liked($id_photo, $_SESSION['id']);
+	 $my_photo = check_if_my_photo($_GET['id_photo'], $_SESSION['id']);
+		if ($already_liked != 0 || $my_photo != 0)
+		{
+			echo 'src="../img/paw-grey.png"';
+			if ($already_liked != 0)
+				echo 'title="Vous aimez déjà cette image !"';
+			else if ($my_photo != 0)
+				echo 'title="Vous ne pouvez pas aimer votre image !"';
+		}
+		else {
+		echo 'src="../img/paw-black.png"';
+		echo 'onmouseover="this.src=\'../img/paw-pink.png\'"';
+		echo 'onmouseout="this.src=\'../img/paw-black.png\'"';
+		echo 'onclick="increment_like()"';
+		}
+	}
+	else {
+		echo 'src="../img/paw-grey.png"';
+	}
+}
 
 ?>

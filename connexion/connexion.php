@@ -18,20 +18,22 @@
   	$current_page = "connexion";
 	include '../header.php';
 	?>
-	<div id="center">
+	<div class="center">
 		<h2>Connexion</h2><br/>
 
 		<p class="text">Cupcake ipsum dolor sit amet marzipan halvah pastry. Sesame snaps toffee sweet roll dragée carrot cake. Pastry sweet marzipan fruitcake cupcake danish gingerbread sweet jelly-o.</p><br/>
 
 		<form method="post" action="check-connexion.php">
-			<p>Mail : </p>
-			<input type="text" name="mail"
+			<fieldset>
+				<legend>Je me connecte</legend><br/>
+			<label for="mail">Mail :</label>
+			<input type="text" name="mail" id="mail"
 			<?PHP if ($_SESSION['connexion-mail'] == "KO" ||
 			$_SESSION['connexion-mail-exists'] == "KO")
 			{echo "class='invalid'";}?>
 			><br/><br/>
-			<p>Mot de passe : </p>
-			<input type="password" name="password"
+			<label for="password">Mot de passe :</label>
+			<input type="password" name="password" id="password"
 			<?PHP if ($_SESSION['connexion-password'] == "KO" ||
 			$_SESSION['connexion-good-password'] == "KO")
 			{echo "class='invalid'";}?>
@@ -40,7 +42,8 @@
 			type="submit"
 			name="submit"
 			value="Envoyer"/><br/><br/>
-			<p class="text">Tu as oublié ton mot de passe ? <a href="http://localhost:8080/camagru/reset-password/reset-password.php">Clique ici !</a></p>
+		</fieldset>
+			<p class="text">Tu as oublié ton mot de passe ? <a href="../reset-password/reset-password.php">Clique ici !</a></p>
 		</form><br/><br/>
 		<?PHP
 		include "../errors.php";

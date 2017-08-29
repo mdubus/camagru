@@ -21,7 +21,7 @@
   include "header.php";
 	echo $_SESSION['identifiant'];
   ?>
-  <div id="center">
+  <div class="center">
 
   <p class="text">Cupcake ipsum dolor sit amet tart. Sugar plum marshmallow
     cupcake jelly-o sugar plum chocolate bar chocolate bar jelly. Macaroon
@@ -29,7 +29,7 @@
     cookie pastry chocolate cake apple pie candy caramels cake. Candy jujubes
     cotton candy brownie cheesecake icing fruitcake icing candy. Sugar plum
     jelly-o liquorice jujubes icing chocolate jujubes tart.</p><br/>
-    <img src="http://localhost:8080/camagru/img/catmagru.png" id="home" alt="Catmagru"><br/>
+    <img src="img/catmagru.png" id="home" alt="Catmagru"><br/>
 <p class="text">Oat cake muffin donut croissant candy canes danish cake.
   Donut dragée toffee gingerbread carrot cake candy canes. Biscuit chocolate
   cake sweet dragée powder carrot cake sweet. Sugar plum chocolate halvah cotton
@@ -42,5 +42,6 @@
    Carrot cake fruitcake pudding dragée icing. Croissant candy canes pie tiramisu
     icing cotton candy. Macaroon jelly beans jelly-o powder gingerbread icing
     chocolate pie sweet roll. Sugar plum topping muffin.</p></div>
+
 </body>
 </html>

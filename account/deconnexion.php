@@ -20,7 +20,7 @@ session_start();
   	$current_page = "deconnexion";
 	include '../header.php';
 	?>
-	<div id="center">
+	<div class="center">
 		<h2>À bientôt <?PHP echo $_SESSION['login'];?> !</h2><br/>
 
 		<p class="text" style="text-align:center;">Tu as bien été déconnecté et vas être redirigé vers l'accueil dans 5 secondes.</p><br/>

@@ -1,6 +1,5 @@
-#gallery{
+.gallery{
 	padding: .5vw;
-	font-size: 0;
 	display: -ms-flexbox;
 	-ms-flex-wrap: wrap;
 	-ms-flex-direction: column;
@@ -10,7 +9,11 @@
 	display: flex;
 }
 
-#gallery div {
+#common-gallery{
+	font-size:0;
+}
+
+.gallery div{
 	-webkit-box-flex: auto;
 	-ms-flex: auto;
 	flex: auto;
@@ -20,13 +23,17 @@
 	background: #FF686B;
 }
 
-#gallery div img{
+.gallery div img{
 	width:100%;
 	height:auto;
-
+	display:block;
 }
 
-#gallery div img:hover{
+.gallery div img:hover{
 	opacity: 0.7;
+}
 
+#photos{
+	width:60%;
+	margin:0;
 }
