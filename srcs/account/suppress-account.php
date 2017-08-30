@@ -9,10 +9,23 @@ else {
 	if ($_POST['oui'] == "Oui")
 	{
 		try{
-			include '../config/database.php';
+			include '../../config/database.php';
 			$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$bdd->query("USE camagru");
+
+			$requete = $bdd->prepare("DELETE FROM `comments` WHERE `id_user`= :id_user");
+			$requete->bindParam(':id_user', $_SESSION['id']);
+			$requete->execute();
+
+			$requete = $bdd->prepare("DELETE FROM `likes` WHERE `id_user`= :id_user");
+			$requete->bindParam(':id_user', $_SESSION['id']);
+			$requete->execute();
+
+			$requete = $bdd->prepare("DELETE FROM `photos` WHERE `id_user`= :id_user");
+			$requete->bindParam(':id_user', $_SESSION['id']);
+			$requete->execute();
+
 			$requete = $bdd->prepare("DELETE FROM `utilisateurs` WHERE `mail`= :mail");
 			$requete->bindParam(':mail', $_SESSION['mail']);
 			$requete->execute();

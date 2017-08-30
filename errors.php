@@ -87,7 +87,7 @@ function	error_reset_password()
 	}
 }
 
-function delete_error_reset_password()
+function	delete_error_reset_password()
 {
 	$_SESSION['flag-reset-password-mail-exists'] = NULL;
 	$_SESSION['mail-reinit-password'] = NULL;
@@ -98,6 +98,23 @@ function delete_error_reset_password()
 	$_SESSION['reset-same-password'] = NULL;
 	$_SESSION['reset-good-token'] = NULL;
 	$_SESSION['reinit-password-in-db'] = NULL;
+}
+
+function	error_post_comment()
+{
+	if ($_SESSION['comment-send'] == "KO")
+		echo "<br/><br/><div id='inscription-ko'>Erreur lors de l'envoi du commentaire</div>";
+	else if ($_SESSION['comment-send'] == "OK"){
+		echo "<br/><br/><div id='inscription-ok'><p>Ton commentaire a bien été envoyé !</p>";
+		if ($_SESSION['login'] != $_SESSION['login-target'])
+		{
+			echo "<p>".$_SESSION['login-target']." va en être informé par mail</p></div>";
+		}
+		else {
+			echo "</div>";
+		}
+	}
+	$_SESSION['comment-send'] = NULL;
 }
 
 

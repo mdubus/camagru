@@ -1,6 +1,6 @@
 <?php
 session_start();
-$upload_dir = "../img/galerie/";
+$upload_dir = "../../img/galerie/";
 if (isset($_POST['hidden_data']) && $_POST['hidden_data'] != NULL)
 {
 $img = $_POST['hidden_data'];
@@ -15,7 +15,7 @@ $success = file_put_contents($file, $data);
 $id = $_SESSION['id'];
 try{
 	$date_upload = time();
-	include '../config/database.php';
+	include '../../config/database.php';
 	$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 	$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$bdd->query("USE camagru");
@@ -32,7 +32,7 @@ catch (PDOException $e) {
 }
 }
 else {
-	echo "<meta http-equiv='refresh' content='0,url=../index.php'>";
+	echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
 }
 
 ?>

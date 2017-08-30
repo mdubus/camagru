@@ -10,22 +10,60 @@
 
 #like-and-comment{
 	width:50vw;
-	display: flex
+	display: -ms-flexbox;
+	-ms-flex-wrap: wrap;
+	-ms-flex-direction: column;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	display: -webkit-box;
+	display: flex;
 	margin: auto;
+	justify-content: space-between;
 }
 
 #like{
-	width:10vw;
+	width:15%;
 	display: block;
 	text-align: center;
-	margin: auto;
 }
 
 #like-img img{
 	width:5vw;
+	margin: auto;
 }
 
 
+#post-comment{
+	width: 70%;
+	display: block;
+	padding:0% 2%;
+}
+
+fieldset{
+	border: none;
+	margin:0;
+	padding:0;
+}
+
+legend{
+	color:#FF686B;
+	font-size:1.2vw;
+	font-family:verdana;
+}
+
+textarea{
+	display:block;
+	width:100%;
+	margin: 2%;
+}
+
+#list-comments{
+	width:50vw;
+	display:block;
+	margin:auto;
+}
+
 #comment{
-	width: 50vw;
+	border: 1px #FF686B solid;
+	padding:0% 2%;
 }

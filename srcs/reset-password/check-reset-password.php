@@ -1,6 +1,8 @@
 <?PHP session_start();
 
-include "../functions.php";
+include "../../functions/reset-password.php";
+include "../../functions/inscription.php";
+include "../../functions/connexion.php";
 
 $mail = htmlentities($_POST['mail']);
 
@@ -16,10 +18,9 @@ else {
 if ($_SESSION['flag-reset-password-mail-exists'] == "OK")
 {
 	$token = bin2hex(random_bytes(64));
-	echo $token;
 
 	try{
-		include '../config/database.php';
+		include '../../config/database.php';
 		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$bdd->query("USE camagru");

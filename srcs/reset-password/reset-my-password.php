@@ -6,16 +6,16 @@
 @import url('https://fonts.googleapis.com/css?family=Merienda+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 </style>
-<link rel="stylesheet" type="text/css" href="../css/global.css">
-<link rel="stylesheet" type="text/css" href="../css/header.css">
-<link rel="stylesheet" type="text/css" href="../css/inscription.css">
+<link rel="stylesheet" type="text/css" href="../../css/global.css">
+<link rel="stylesheet" type="text/css" href="../../css/header.css">
+<link rel="stylesheet" type="text/css" href="../../css/inscription.css">
 <meta name="google" content="notranslate" />
 <title>Reinitialiser mon mot de passe - Camagru</title>
 </head>
 
 <body>
 	<?php
-	include '../header.php';
+	include '../../header.php';
 	$token = $_GET['token'];
 	?>
 	<div class="center">
@@ -41,10 +41,10 @@
 		</form><br/><br/>
 
 		<?PHP
-		include "../errors.php";
+		include "../../errors.php";
 		error_reset_password();
 		if ($_SESSION['reinit-password-in-db'] == "OK")
-			echo "<meta http-equiv='refresh' content='5,url=../index.php'>";
+			echo "<meta http-equiv='refresh' content='5,url=../../index.php'>";
 		delete_error_reset_password();
 		?>
 

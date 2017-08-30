@@ -1,6 +1,6 @@
 <?PHP
 session_start();
-include '../header.php';
+include '../../header.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,9 +9,9 @@ include '../header.php';
 @import url('https://fonts.googleapis.com/css?family=Merienda+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 </style>
-<link rel="stylesheet" type="text/css" href="../css/global.css">
-<link rel="stylesheet" type="text/css" href="../css/header.css">
-<link rel="stylesheet" type="text/css" href="../css/gallery.css">
+<link rel="stylesheet" type="text/css" href="../../css/global.css">
+<link rel="stylesheet" type="text/css" href="../../css/header.css">
+<link rel="stylesheet" type="text/css" href="../../css/gallery.css">
 <meta name="google" content="notranslate" />
 <title>Mes montages</title>
 </head>
@@ -19,7 +19,7 @@ include '../header.php';
 <body>
 	<?php
 	$current_page = "montages-users";
-	include '../functions.php';
+	include '../../functions/gallery.php';
 	?>
 	<div class="center">
 		<h2>Montages de <?PHP echo $_GET['login'];?></h2><br/><!-- securiser -->
@@ -37,14 +37,13 @@ include '../header.php';
 				foreach ($data as $data1)
 				{
 					echo "<div class='photo'>";
-					echo "<a href='photo.php?id_photo=".$data1['id_photo']."'><img src='".$data1['link']."'></a>";
+					echo "<a href='../photo/photo.php?id_photo=".$data1['id_photo']."'><img src='".$data1['link']."'></a>";
 					echo "</div>";
 				}
 				echo "</div>";
 				echo "<p class='text'><a href='../gallery/gallery.php'>Revenir à la galerie</a></p>";
 			}
 			?>
-		<!-- </div> -->
 	</div>
 </body>
 </html>

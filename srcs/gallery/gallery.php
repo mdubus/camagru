@@ -6,9 +6,9 @@
 @import url('https://fonts.googleapis.com/css?family=Merienda+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 </style>
-<link rel="stylesheet" type="text/css" href="../css/global.css">
-<link rel="stylesheet" type="text/css" href="../css/header.css">
-<link rel="stylesheet" type="text/css" href="../css/gallery.css">
+<link rel="stylesheet" type="text/css" href="../../css/global.css">
+<link rel="stylesheet" type="text/css" href="../../css/header.css">
+<link rel="stylesheet" type="text/css" href="../../css/gallery.css">
 <meta name="google" content="notranslate" />
 <title>Galerie - Camagru</title>
 </head>
@@ -16,8 +16,8 @@
 <body>
 	<?php
   	$current_page = "gallery";
-	include '../header.php';
-	include '../functions.php';
+	include '../../header.php';
+	include '../../functions/gallery.php';
 	?>
 	<div id="center">
 		<h2>Galerie</h2><br/>
@@ -29,7 +29,7 @@
 	foreach ($data as $key=>$elem)
 	{
 		echo "<div class='photo'>";
-		echo "<a href='../montage/photo.php?id_photo=".$elem['id_photo']."'><img src='".$elem['link']."'></a>";
+		echo "<a href='../photo/photo.php?id_photo=".$elem['id_photo']."'><img src='".$elem['link']."'></a>";
 		echo "</div>";
 
 	}

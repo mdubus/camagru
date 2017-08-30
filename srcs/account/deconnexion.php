@@ -8,9 +8,9 @@ session_start();
 @import url('https://fonts.googleapis.com/css?family=Merienda+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 </style>
-<link rel="stylesheet" type="text/css" href="../css/global.css">
-<link rel="stylesheet" type="text/css" href="../css/header.css">
-<link rel="stylesheet" type="text/css" href="../css/inscription.css">
+<link rel="stylesheet" type="text/css" href="../../css/global.css">
+<link rel="stylesheet" type="text/css" href="../../css/header.css">
+<link rel="stylesheet" type="text/css" href="../../css/inscription.css">
 <meta name="google" content="notranslate" />
 <title>Deconnexion - Camagru</title>
 </head>
@@ -18,7 +18,7 @@ session_start();
 <body>
 	<?php
   	$current_page = "deconnexion";
-	include '../header.php';
+	include '../../header.php';
 	?>
 	<div class="center">
 		<h2>À bientôt <?PHP echo $_SESSION['login'];?> !</h2><br/>
@@ -31,5 +31,5 @@ session_start();
 <?PHP
 session_destroy();
 
-	echo "<meta http-equiv='refresh' content='5,url=../index.php'>";
+	echo "<meta http-equiv='refresh' content='5,url=../../index.php'>";
 ?>

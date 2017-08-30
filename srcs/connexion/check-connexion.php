@@ -1,6 +1,7 @@
 <?PHP session_start();
 
-include "../functions.php";
+include "../../functions/connexion.php";
+include "../../functions/inscription.php";
 
 $mail = htmlentities($_POST['mail']);
 $password = htmlentities($_POST['password']);

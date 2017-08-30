@@ -53,11 +53,10 @@ function	add_pictures($bdd)
 function	create_likes_table($bdd)
 {
 $bdd->query("CREATE TABLE IF NOT EXISTS likes (
-	id_likes INT PRIMARY KEY AUTO_INCREMENT,
 	id_user INT,
 	FOREIGN KEY (id_user) REFERENCES utilisateurs(id),
 	id_photo INT,
-	FOREIGN KEY (id_photo) REFERENCES photos(id_photo)
+	FOREIGN KEY (id_photo) REFERENCES photos(id_photo) ON DELETE CASCADE
 )");
 }
 
@@ -75,12 +74,22 @@ function	add_likes($bdd)
 function	create_comments_table($bdd)
 {
 $bdd->query("CREATE TABLE IF NOT EXISTS comments (
-	id_comments INT PRIMARY KEY AUTO_INCREMENT,
 	id_user INT,
 	FOREIGN KEY (id_user) REFERENCES utilisateurs(id),
 	id_photo INT,
-	FOREIGN KEY (id_photo) REFERENCES photos(id_photo)
+	FOREIGN KEY (id_photo) REFERENCES photos(id_photo) ON DELETE CASCADE,
+	comments VARCHAR(1000) CHARACTER SET UTF8
 )");
+}
+
+function	add_comments($bdd)
+{
+	$bdd->query("LOAD DATA INFILE '/Users/mdubus/http/MyWebSite/camagru/config/comments.csv'
+	INTO TABLE `comments`
+	CHARACTER SET UTF8
+	FIELDS TERMINATED BY ','
+	LINES TERMINATED BY '\r\n'
+	IGNORE 1 LINES (id_user,id_photo,comments)");
 }
 
 

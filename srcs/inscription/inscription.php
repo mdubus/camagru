@@ -6,9 +6,9 @@
 @import url('https://fonts.googleapis.com/css?family=Merienda+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 </style>
-<link rel="stylesheet" type="text/css" href="../css/global.css">
-<link rel="stylesheet" type="text/css" href="../css/header.css">
-<link rel="stylesheet" type="text/css" href="../css/inscription.css">
+<link rel="stylesheet" type="text/css" href="../../css/global.css">
+<link rel="stylesheet" type="text/css" href="../../css/header.css">
+<link rel="stylesheet" type="text/css" href="../../css/inscription.css">
 <meta name="google" content="notranslate" />
 <title>Inscription - Camagru</title>
 </head>
@@ -16,7 +16,7 @@
 <body>
 	<?php
   	$current_page = "inscription";
-	include '../header.php';
+	include '../../header.php';
 	?>
 	<div class="center">
 		<h2>Inscription</h2><br/>
@@ -65,7 +65,7 @@
 		</form><br/><br/>
 
 		<?PHP
-		include "../errors.php";
+		include "../../errors.php";
 		error_inscription();
 		delete_error_inscription();
 		?>

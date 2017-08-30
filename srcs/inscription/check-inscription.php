@@ -1,6 +1,6 @@
 <?PHP session_start();
 
-include "../functions.php";
+include "../../functions/inscription.php";
 
 $identifiant = htmlentities($_POST['identifiant']);
 $mail = htmlentities($_POST['mail']);
@@ -28,7 +28,7 @@ if ($_SESSION['inscription-identifiant'] == "OK" && $_SESSION['inscription-mail'
 {
 	$_SESSION['flag-inscription'] = "OK";
 	try{
-		include '../config/database.php';
+		include '../../config/database.php';
 		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$bdd->query("USE camagru");
@@ -41,7 +41,7 @@ if ($_SESSION['inscription-identifiant'] == "OK" && $_SESSION['inscription-mail'
 		$requete->bindParam(':password', $password);
 		$requete->execute();
 
-		// send_confirmation_mail($identifiant, $mail); A REMETTRE
+		// send_confirmation_mail($identifiant, $mail, $_POST['submit']); // REMETTRE
 	}
 	catch (PDOException $e) {
 		print "Erreur : ".$e->getMessage()."<br/>";

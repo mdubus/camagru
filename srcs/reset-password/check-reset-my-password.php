@@ -1,6 +1,7 @@
 <?PHP session_start();
 
-include "../functions.php";
+include "../../functions/reset-password.php";
+include "../../functions/inscription.php";
 
 $mail = htmlentities($_POST['mail']);
 $password1 = htmlentities($_POST['password1']);
@@ -26,7 +27,7 @@ $_SESSION['reset-same-password'] == "OK")
 		$new_password = hash('sha512', $password1);
 
 		try{
-			include '../config/database.php';
+			include '../../config/database.php';
 			$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$bdd->query("USE camagru");
