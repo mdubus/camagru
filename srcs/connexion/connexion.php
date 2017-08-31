@@ -1,4 +1,9 @@
-<?PHP session_start();?>
+<?PHP session_start();
+	if ($_SESSION['login'])
+	{
+		echo "<meta http-equiv='refresh' content='0,url=../account/my-account.php'>";
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>

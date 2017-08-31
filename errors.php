@@ -118,4 +118,40 @@ function	error_post_comment()
 }
 
 
+
+function	error_change_password()
+{
+	if ($_SESSION['change-pass-old_pass'] == "KO")
+		echo "<div id='inscription-ko'>Erreur : Veuillez renseigner votre ancien mot de passe</div>";
+	else if ($_SESSION['flag-old-pass'] == "KO")
+		echo "<div id='inscription-ko'>Erreur : Le mot de passe ne correspond pas</div>";
+	if ($_SESSION['change-pass-pass1'] == "KO")
+		echo "<div id='inscription-ko'>Erreur : Vous devez renseigner votre nouveau mot de passe</div>";
+	else if ($_SESSION['flag-regex-password'] == "KO")
+		echo "<div id='inscription-ko'>Erreur : Votre mot de passe doit contenir au moins 6 caractères dont un chiffre</div>";
+	if ($_SESSION['change-pass-pass2'] == "KO")
+		echo "<div id='inscription-ko'>Erreur : Veuillez recopier votre nouveau mot de passe</div>";
+	else if ($_SESSION['same-password'] == "KO")
+		echo "<div id='inscription-ko'>Erreur : Veuillez recopier le mot de passe à l'identique</div>";
+	if ($_SESSION['flag-password-changed'] == "OK"){
+		echo "<div id='inscription-ok'><p>Ton mot de passe a bien été modifié !</p><br/>";
+		echo "<p>Tu vas être redirigé vers ton espace personnel dans 5 secondes.</p></div>";
+	}
+}
+
+function delete_error_change_password()
+{
+	$_SESSION['change-pass-old_pass'] = NULL;
+	$_SESSION['change-pass-pass1'] = NULL;
+	$_SESSION['change-pass-pass2'] = NULL;
+	$_SESSION['flag-regex-password'] = NULL;
+	$_SESSION['same-password'] = NULL;
+	$_SESSION['flag-old-pass'] = NULL;
+	$_SESSION['flag-password-changed'] = NULL;
+}
+
+
+
+
+
 ?>

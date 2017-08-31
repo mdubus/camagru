@@ -10,13 +10,13 @@ session_start();
 
 	<li><a  <?PHP if ($current_page == "gallery"){echo "id='current'";}?>href='/camagru/srcs/gallery/gallery.php'>Galerie</a></li>
 	<?PHP
+	echo "<li><a ";
+	if ($current_page == "montages"){
+		echo "id='current'";
+	}
+	echo "href='/camagru/srcs/montage/montage.php'>Montages</a></li>";
 	if ($_SESSION['connected'] == "OK")
 	{
-		echo "<li><a ";
-		if ($current_page == "montages"){
-			echo "id='current'";
-		}
-		echo "href='/camagru/srcs/montage/montage.php'>Montages</a></li>";
 		echo "<li><a ";
 		if ($current_page == "my-account"){
 			echo "id='current'";

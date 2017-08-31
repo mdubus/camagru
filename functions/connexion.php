@@ -144,6 +144,33 @@ function	get_nb_likes_user($id)
 
 
 		}
+function	check_old_pass($old_pass, $flag)
+{
+
+	try{
+		include '../../config/database.php';
+		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bdd->query("USE camagru");
+		$requete = $bdd->prepare("SELECT `mdp` FROM `utilisateurs` WHERE `id` LIKE :id");
+		$requete->bindParam(':id', $_SESSION['id']);
+		$requete->execute();
+		$code = $requete->fetch(PDO::FETCH_ASSOC);
+		// print_r ($code);
+		if ($old_pass == $code['mdp'])
+		{
+			$_SESSION[$flag] = "OK";
+			return ($code);
+		}
+		else {
+			$_SESSION[$flag] = "KO";
+		}
+	}
+	catch (PDOException $e) {
+		print "Erreur : ".$e->getMessage()."<br/>";
+		die();
+	}
+}
 
 
  ?>

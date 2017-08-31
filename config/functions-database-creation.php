@@ -74,6 +74,7 @@ function	add_likes($bdd)
 function	create_comments_table($bdd)
 {
 $bdd->query("CREATE TABLE IF NOT EXISTS comments (
+	id_comment INT PRIMARY KEY AUTO_INCREMENT,
 	id_user INT,
 	FOREIGN KEY (id_user) REFERENCES utilisateurs(id),
 	id_photo INT,

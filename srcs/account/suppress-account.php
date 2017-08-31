@@ -35,17 +35,22 @@ else {
 			die();
 		}
 		$_SESSION['session-destroy'] = "OK";
-		echo "<meta http-equiv='refresh' content='0,url=my-account.php'>";
+		header('Location: my-account.php');
+		exit();
 
 
 	}
 	else if ($_POST['non'] == "Non")
 	{
 		$_SESSION['wish-to-suppress-account'] = NULL;
-		echo "<meta http-equiv='refresh' content='0,url=my-account.php'>";
+		header('Location: my-account.php');
+		exit();
+
 	}
 	else {
-		echo "<meta http-equiv='refresh' content='0,url=my-account.php'>";
+		header('Location: my-account.php');
+		exit();
+		
 	}
 }
 ?>

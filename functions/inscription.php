@@ -24,6 +24,7 @@ function check_regex_mail($data)
 
 function check_regex_password($data, $flag)
 {
+	echo $data;
 	if (preg_match("/(?=.{6,})(?=.*\d)(?=.*[a-zA-Z])/", $data) != 1)
 	{
 		$_SESSION[$flag] = "KO";
