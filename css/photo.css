@@ -67,3 +67,12 @@ textarea{
 	border: 1px #FF686B solid;
 	padding:0% 2%;
 }
+
+.delete-comment{
+	color: #FF686B;
+	font-family: 'Merienda One', cursive;
+	text-decoration: none;
+	font-size:1.2vw;
+	margin-bottom:1%;
+	display: none;
+}

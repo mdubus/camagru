@@ -116,7 +116,7 @@ function	get_comments($id_photo)
 		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$bdd->query("USE camagru");
 		$bdd->query("SET NAMES UTF8");
-		$requete = $bdd->prepare("SELECT `login`, `comments` FROM `comments` INNER JOIN `utilisateurs` ON utilisateurs.id = comments.id_user WHERE `id_photo` LIKE :id_photo");
+		$requete = $bdd->prepare("SELECT `login`, `comments`, `id_comment` FROM `comments` INNER JOIN `utilisateurs` ON utilisateurs.id = comments.id_user WHERE `id_photo` LIKE :id_photo");
 		$requete->bindParam(':id_photo', $id_photo);
 		$requete->execute();
 		$data = $requete->fetchAll(PDO::FETCH_ASSOC);
@@ -182,13 +182,25 @@ else {
 	echo "<br/>";
 	foreach ($comments as $data)
 	{
-		echo "<div id='comment'>";
-		echo "<p class='text'>Posté par <a href='../montage/montages-users.php?login=".$data['login']."'>".$data['login']."</a></p>";
-		echo "<p class='text'>".$data['comments']."</p>";
+		// print_r ($data);
+
+		if ($data['login'] == $_SESSION['login'])
+		{
+			echo "<div id='comment' onmouseover=\"getElementById('".$data['id_comment'];
+			echo "').style.display='block'\" onmouseout=\"getElementById('".$data['id_comment'];
+			echo "').style.display='none'\" >";
+			echo "<p class='text'>Posté par <a href='../montage/montages-users.php?login=".$data['login']."'>".$data['login']."</a></p>";
+			echo "<p class='text'>".$data['comments']."</p>";
+			echo "<a href='delete-comment.php?id-comment=".$data['id_comment']."' class='delete-comment' id='".$data['id_comment']."'>Supprimer</a>";
+		}
+		else {
+			echo "<div id='comment'>";
+			echo "<p class='text'>Posté par <a href='../montage/montages-users.php?login=".$data['login']."'>".$data['login']."</a></p>";
+			echo "<p class='text'>".$data['comments']."</p>";
+		}
 		echo "</div>";
 		echo "<br/>";
 	}
 }
 }
-
- ?>
+?>
