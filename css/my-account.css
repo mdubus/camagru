@@ -1,6 +1,9 @@
-#fake-link{
+.fake-link{
 	color: #FF686B;
 	font-family: 'Merienda One', cursive;
 	text-decoration: none;
 	font-size:1.2vw;
+	text-align:center;
+	display:block;
+	margin-top:1%;
 }

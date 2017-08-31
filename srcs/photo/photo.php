@@ -1,38 +1,12 @@
 <?PHP session_start();
-
-if (isset($_GET['id_photo']) && $_GET['id_photo'] != NULL && is_numeric($_GET['id_photo']))
-{
-	try{
-		include '../../config/database.php';
-		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$bdd->query("USE camagru");
-		$requete = $bdd->prepare("SELECT * FROM `photos` WHERE `id_photo` = :id_photo");
-		$requete->bindParam(':id_photo', $_GET['id_photo']);
-		$requete->execute();
-		$code = $requete->rowCount();
-		if ($code == 0)
-		{
-			header('Location: ../gallery/gallery.php');
-			exit();
-		}
-		else {
-			$_SESSION['id_photo'] = $_GET['id_photo'];
-		}
-	}
-	catch (PDOException $e) {
-		print "Erreur : ".$e->getMessage()."<br/>";
-		die();
-	}
-}
-else {
-	header('Location: ../gallery/gallery.php');
-	exit();
-}
+include '../../functions/page-photo.php';
+include '../../header.php';
+check_if_picture_exists($_GET['id_photo']);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="google" content="notranslate" />
 <style>
 @import url('https://fonts.googleapis.com/css?family=Merienda+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
@@ -40,24 +14,31 @@ else {
 <link rel="stylesheet" type="text/css" href="../../css/global.css">
 <link rel="stylesheet" type="text/css" href="../../css/header.css">
 <link rel="stylesheet" type="text/css" href="../../css/photo.css">
+<link rel="stylesheet" type="text/css" href="../../css/my-account.css">
 <meta name="google" content="notranslate" />
 <title>Photos - Camagru</title>
 </head>
 
 <body>
-	<?php
-	include '../../header.php';
-	?>
 	<div class="center">
 
 		<?php
-		include '../../functions/page-photo.php';
 
 		$data = get_infos_user_photo($_GET['id_photo']);
 		echo "<div id='id_photo'>";
 		echo "<img src='".$data[0]['link']."'/>";
+
 		echo "</div>";
-		echo "<p class='text' style='text-align:center;'>Photo de <a href='../montage/montages-users.php?login=".$data[0]['login']."'>".$data[0]['login']."</a></p><br/>";
+
+
+
+		echo "<p class='text' style='text-align:center;'>Photo de <a href='../montage/montages-users.php?login=".$data[0]['login']."'>".$data[0]['login']."</a></p>";
+		$result = picture_belong_to_user($_GET['id_photo']);
+		if ($result > 0)
+		{
+			echo "<a href='delete-picture.php?id-photo=".$_GET['id_photo']."' id='delete-picture' class='fake-link'>Supprimer cette photo</a><br/>";
+		}
+
 		$nb_like = get_nb_likes($_GET['id_photo']);
 		$_SESSION['login-target'] = $data[0]['login'];
 		?>

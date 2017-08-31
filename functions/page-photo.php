@@ -203,4 +203,60 @@ else {
 	}
 }
 }
+
+function	check_if_picture_exists($id)
+{
+	if (isset($id) && $id != NULL && is_numeric($id))
+	{
+		try{
+			include '../../config/database.php';
+			$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$bdd->query("USE camagru");
+			$requete = $bdd->prepare("SELECT * FROM `photos` WHERE `id_photo` = :id_photo");
+			$requete->bindParam(':id_photo', $id);
+			$requete->execute();
+			$code = $requete->rowCount();
+			if ($code == 0)
+			{
+				header('Location: ../gallery/gallery.php');
+				exit();
+			}
+			else {
+				$_SESSION['id_photo'] = $id;
+			}
+		}
+		catch (PDOException $e) {
+			print "Erreur : ".$e->getMessage()."<br/>";
+			die();
+		}
+	}
+	else {
+		header('Location: ../gallery/gallery.php');
+		exit();
+	}
+}
+
+function	picture_belong_to_user($id)
+{
+	try{
+		include '../../config/database.php';
+		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bdd->query("USE camagru");
+		$requete = $bdd->prepare("SELECT * FROM `photos` WHERE `id_photo` = :id_photo AND `id_user` = :id_user");
+		$requete->bindParam(':id_photo', $id);
+		$requete->bindParam(':id_user', $_SESSION['id']);
+		$requete->execute();
+		$code = $requete->rowCount();
+		return ($code);
+
+}
+catch (PDOException $e) {
+	print "Erreur : ".$e->getMessage()."<br/>";
+	die();
+}
+}
+
+
 ?>
