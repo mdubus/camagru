@@ -30,6 +30,7 @@ if (isset($_GET['id-photo']) && $_GET['id-photo'] != NULL && is_numeric($_GET['i
 }
 else {
 	header('Location: photo.php?id_photo='.$_SESSION['id_photo']);
+	exit();
 }
 	echo "<meta http-equiv='refresh' content='0,url=../montage/montages-users.php?login=".$_SESSION['login']."'>";
 

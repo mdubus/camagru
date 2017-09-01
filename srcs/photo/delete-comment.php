@@ -29,6 +29,7 @@ if (isset($_GET['id-comment']) && $_GET['id-comment'] != NULL && is_numeric($_GE
 }
 else {
 	header('Location: photo.php?id_photo='.$_SESSION['id_photo']);
+	exit();
 }
 	echo "<meta http-equiv='refresh' content='0,url=photo.php?id_photo=".$_SESSION['id_photo']."'>";
 

@@ -47,7 +47,6 @@ function	disable_buttons(){
 	document.getElementById('reset').style.display = "initial";
 	document.getElementById('snap').style.display = "none";
 	document.getElementById('save').style.display = "initial";
-	document.getElementById('upload').style.display = "none";
 	context.drawImage(video, 0, 0, 400, 300);
 }
 
@@ -57,7 +56,6 @@ function	reset_buttons(){
 		document.getElementById('reset').style.display = "none";
 		document.getElementById('snap').style.display = "initial";
 		document.getElementById('save').style.display = "none";
-		document.getElementById('upload').style.display = "initial";
 }
 
 function	do_when_saving(){
@@ -73,4 +71,3 @@ var	save = document.getElementById('save');
 save.onclick = do_when_saving;
 
 document.getElementById("snap").addEventListener("click", disable_buttons);
-document.getElementById("upload").addEventListener("click", disable_buttons);
