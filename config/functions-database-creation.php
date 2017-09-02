@@ -93,5 +93,23 @@ function	add_comments($bdd)
 	IGNORE 1 LINES (id_user,id_photo,comments)");
 }
 
+function	create_filters_table($bdd)
+{
+$bdd->query("CREATE TABLE IF NOT EXISTS filters (
+	id_filter INT PRIMARY KEY AUTO_INCREMENT,
+	path_filter VARCHAR(255) UNIQUE
+)");
+}
+
+function	add_filters($bdd)
+{
+	$bdd->query("LOAD DATA INFILE '/Users/mdubus/http/MyWebSite/camagru/config/filters.csv'
+	INTO TABLE `filters`
+	CHARACTER SET UTF8
+	FIELDS TERMINATED BY ','
+	LINES TERMINATED BY '\r\n'
+	IGNORE 1 LINES (path_filter)");
+}
+
 
 ?>

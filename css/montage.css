@@ -1,3 +1,8 @@
+#camera-and-filters{
+	display: flex;
+	justify-content: space-around;
+}
+
 video{
 	width:100%;
 	height:auto;
@@ -42,6 +47,28 @@ button{
 	display: none;
 }
 
-/*#upload{
+#filters{
+	width: 5vw;
+	display:flex;
+	flex-direction: column;
+}
+
+#filters img{
+	width:100%;
+}
+
+#side{
+	width:10vw;
+}
+
+.hidden_path{
 	display:none;
-}*/
+}
+
+#fleche-bas{
+	width:65%;
+}
+
+#fleche-haut{
+	width:65%;
+}

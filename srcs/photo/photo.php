@@ -26,7 +26,7 @@ check_if_picture_exists($_GET['id_photo']);
 
 		$data = get_infos_user_photo($_GET['id_photo']);
 		echo "<div id='id_photo'>";
-		echo "<img src='".$data[0]['link']."'/>";
+		echo "<img src='../../".$data[0]['link']."'/>";
 
 		echo "</div>";
 

@@ -37,7 +37,7 @@ include '../../header.php';
 				foreach ($data as $data1)
 				{
 					echo "<div class='photo'>";
-					echo "<a href='../photo/photo.php?id_photo=".$data1['id_photo']."'><img src='".$data1['link']."'></a>";
+					echo "<a href='../photo/photo.php?id_photo=".$data1['id_photo']."'><img src='../../".$data1['link']."'></a>";
 					echo "</div>";
 				}
 				echo "</div>";

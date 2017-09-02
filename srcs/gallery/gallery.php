@@ -29,7 +29,7 @@
 	foreach ($data as $key=>$elem)
 	{
 		echo "<div class='photo'>";
-		echo "<a href='../photo/photo.php?id_photo=".$elem['id_photo']."'><img src='".$elem['link']."'></a>";
+		echo "<a href='../photo/photo.php?id_photo=".$elem['id_photo']."'><img src='../../".$elem['link']."'></a>";
 		echo "</div>";
 
 	}

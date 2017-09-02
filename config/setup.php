@@ -16,6 +16,8 @@ try {
 	add_likes($bdd);
 	create_comments_table($bdd);
 	add_comments($bdd);
+	create_filters_table($bdd);
+	add_filters($bdd);
 }
 catch (PDOException $e) {
 	print "Erreur : ".$e->getMessage()."<br/>";
