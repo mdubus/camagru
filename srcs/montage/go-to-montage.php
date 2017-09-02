@@ -54,7 +54,6 @@
 	<script>
 
 var img = document.getElementsByClassName('hidden_path');
-// console.log(img);
 var filter = document.getElementsByClassName('image_filter');
 for (i = 0; i < 5; i++)
 {
@@ -77,7 +76,6 @@ function	to_bot()
 			k = 0;
 		}
 		filter[l].src = img[k].src;
-		filter[l].style.
 		l++;
 		k++;
 
@@ -110,11 +108,6 @@ function	to_top()
 
 	}
 }
-
-
-
-
-
 
 	</script>
 </div>
