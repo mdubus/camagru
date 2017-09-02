@@ -10,7 +10,7 @@ $data = base64_decode($img);
 $filename = mktime() . $_SESSION['id'] . ".png";
 $file = $upload_dir . $filename;
 $path = "http://localhost:8080/camagru/" . $file;
-$path_for_bdd = "http://localhost:8080/camagru/img/galerie/" . $filename;
+$path_for_bdd = "img/galerie/" . $filename;
 $success = file_put_contents($file, $data);
 $id = $_SESSION['id'];
 try{

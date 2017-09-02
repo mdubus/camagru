@@ -37,6 +37,7 @@ button{
 
 #buttons{
 	display: flex;
+	width:100%;
 }
 
 #reset{
@@ -48,17 +49,15 @@ button{
 }
 
 #filters{
-	width: 5vw;
+	width: 60vw;
 	display:flex;
-	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 }
 
 #filters img{
-	width:100%;
-}
-
-#side{
-	width:10vw;
+	max-width:10vw;
+	max-height:5vh;
 }
 
 .hidden_path{
@@ -66,9 +65,22 @@ button{
 }
 
 #fleche-bas{
-	width:65%;
+	max-width:15%;
+	max-height:10%;
 }
 
 #fleche-haut{
-	width:65%;
+	max-width:15%;
+	max-height:10%;
+
+}
+
+.filter-on-image{
+	width:20%;
+}
+
+#side{
+	display: flex;
+	width: 90%;
+	margin: auto;
 }

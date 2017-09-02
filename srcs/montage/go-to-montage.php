@@ -10,37 +10,36 @@
 }
 ?>
 <div id="camera-and-filters">
-	<div id="camera">
-		<video id="video" width="400px" height="300px" autoplay></video>
-		<canvas id="canvas" width="400px" height="300px"></canvas><br/><br/>
-		<div id="buttons">
-			<button id="reset">Reset</button>
+	<div id="camera" ondrop="drop(event)" ondragover="allowDrop(event)" style="position:relative;float:left;">
+		<div style="background-color:blue;position:absolute; z-index:3;width:100%; height:100%; opacity: 0.5;"></div>
+		<video id="video" width="400px" height="300px" style="position:absolute;z-index:1;" autoplay></video>
+		<canvas id="canvas" width="400px" height="300px" style="position:absolute;z-index:2;"></canvas>
+		<img src="../../img/empty.png" style="width:100%; border:1px solid black;">
 
-			<button id="snap">Prendre la photo</button>
-			<button id="save">Sauvegarder</button>
-			<form method="post" accept-charset="utf-8" name="form1">
-				<input name="hidden_data" id="hidden_data" type="hidden"/>
-			</form>
-
-		</div>
 	</div>
 
+<!-- Je suis ici
+Et ici aussi -->
+
+</div>
+	<br/>
 	<div id="side">
 		<img src="../../img/fleche-haut.png" id='fleche-haut' onclick='to_top()'/>
 
 		<div id="filters">
+
 			<?php
 			include '../../functions/filters.php';
 
 			$data = get_filters();
 			foreach ($data as $filter)
 			{
-				echo "<img src='../../".$filter['path_filter']."' class='hidden_path'/>";
+				echo "<img src='../..".$filter['path_filter']."' class='hidden_path' id='".$filter['id_filter']."'/>";
 			}
 			for ($i = 0; $i < 5; $i++)
 			{
 				echo "<div class='filter' style='display:block;'>";
-				echo "<img src='' class='image_filter'/>";
+				echo "<img src='' class='image_filter' draggable='true' ondragstart='drag(event)' id=''/>";
 				echo "</div>";
 			}
 
@@ -50,68 +49,60 @@
 		</div>
 		<img src="../../img/fleche-bas.png" id='fleche-bas' onclick='to_bot()'/>
 
+
 	</div>
+
+
+
+
+
+	<script src="filter-effects.js"></script>
 	<script>
 
-var img = document.getElementsByClassName('hidden_path');
-var filter = document.getElementsByClassName('image_filter');
-for (i = 0; i < 5; i++)
-{
-	filter[i].src = img[i].src;
-}
-var j = 0;
-function	to_bot()
-{
-	j++;
-	if (j >= img.length)
-	{
-		j = 0;
-	}
-	var k = j;
-	var l = 0;
-	while (l < 5)
-	{
-		if (k >= img.length)
-		{
-			k = 0;
-		}
-		filter[l].src = img[k].src;
-		l++;
-		k++;
-
-	}
+	function allowDrop(ev) {
+    ev.preventDefault();
 }
 
-function	to_top()
-{
-	j--;
-	if (j <= -(img.length + 1))
-	{
-		j = -1;
-	}
-
-	var k = j;
-	var l = 0;
-	while (l < 5)
-	{
-		if (k <= 0)
-		{
-			k = img.length + j;
-		}
-		if (k >= img.length)
-		{
-			k = 0;
-		}
-		filter[l].src = img[k].src;
-		l++;
-		k++;
-
-	}
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.src);
 }
+
+var i = 0;
+
+function drop(ev) {
+
+	if (ev.target.nodeName != "img")
+	{
+		ev.preventDefault();
+
+		var data = ev.dataTransfer.getData("text");
+		var node = document.createElement("img");
+		console.log(node);
+		node.src = data;
+		node.setAttribute("class", "filter-on-image");
+		ev.target.appendChild(node);
+
+	}
+	i++;
+}
+
+
+
+
 
 	</script>
-</div>
 
+<br/>
+<div id="buttons">
+	<button id="reset">Reset</button>
+
+	<button id="snap">Prendre la photo</button>
+	<button id="save">Sauvegarder</button>
+	<form method="post" accept-charset="utf-8" name="form1">
+		<input name="hidden_data" id="hidden_data" type="hidden"/>
+	</form>
+
+</div>
 
 <br/><br/>
 <script src="camera_handle.js"></script>
