@@ -29,7 +29,7 @@
 			$data = get_filters();
 			foreach ($data as $filter)
 			{
-				echo "<img src='../..".$filter['path_filter']."' class='hidden_path' id='".$filter['id_filter']."'/>";
+				echo "<img src='../../".$filter['path_filter']."' class='hidden_path' id='".$filter['id_filter']."'/>";
 			}
 			for ($i = 0; $i < 5; $i++)
 			{
@@ -66,6 +66,7 @@
 	<button id="save">Sauvegarder</button>
 	<form method="post" accept-charset="utf-8" name="form1">
 		<input name="hidden_data" id="hidden_data" type="hidden"/>
+		<input name="hidden_data2" id="hidden_data2" type="hidden"/>
 	</form>
 
 </div>

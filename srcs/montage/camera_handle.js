@@ -27,18 +27,27 @@ else if(navigator.getUserMedia) { // Standard
 
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
+
+var canvas2 = document.getElementById('canva_filters');
+var context2 = canvas2.getContext('2d');
+
 var video = document.getElementById('video');
+var canvasURL;
+var canvasURL2;
 
 function send_image()
 {
-
-	var canvasURL = canvas.toDataURL('image/png');
+	// context.drawImage(canvas2, 0, 0);
+	canvasURL = canvas.toDataURL('image/png');
 	document.getElementById('hidden_data').value = canvasURL;
+
+	canvasURL2 = canvas2.toDataURL('image/png');
+	document.getElementById('hidden_data2').value = canvasURL2;
+
 	var fd = new FormData(document.forms["form1"]);
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'save_data.php', true);
 	xhr.send(fd);
-	return (canvasURL);
 }
 
 function	disable_buttons(){
@@ -60,8 +69,11 @@ function	reset_buttons(){
 
 function	do_when_saving(){
 	reset_buttons();
-	var image_URL = send_image();
-	document.getElementById("photos").innerHTML += "<div class='photo'><img src='"+image_URL+"'></div>";
+	send_image();
+
+	context.drawImage(canvas2, 0, 0);
+	var image = canvas.toDataURL('image/png');
+	document.getElementById("photos").innerHTML += "<div class='photo'><img src='"+image+"'></div>";
 	var snap = document.getElementById('snap');
 	snap.removeAttribute("onclick");
 	snap.style.backgroundColor = "#FFA69E";
