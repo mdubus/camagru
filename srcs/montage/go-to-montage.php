@@ -10,24 +10,19 @@
 }
 ?>
 <div id="camera-and-filters">
-	<div id="camera" ondrop="drop(event)" ondragover="allowDrop(event)" style="position:relative;float:left;">
-		<div style="background-color:blue;position:absolute; z-index:3;width:100%; height:100%; opacity: 0.5;"></div>
-		<video id="video" width="400px" height="300px" style="position:absolute;z-index:1;" autoplay></video>
-		<canvas id="canvas" width="400px" height="300px" style="position:absolute;z-index:2;"></canvas>
-		<img src="../../img/empty.png" style="width:100%; border:1px solid black;">
+	<div id="camera" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<canvas id="canva_filters" width="400px" height="300px"></canvas>
+		<video id="video" width="400px" height="300px" autoplay></video>
+		<canvas id="canvas" width="400px" height="300px"></canvas>
+		<img src="../../img/empty.png" style="width:100%;">
 
 	</div>
-
-<!-- Je suis ici
-Et ici aussi -->
 
 </div>
 	<br/>
 	<div id="side">
 		<img src="../../img/fleche-haut.png" id='fleche-haut' onclick='to_top()'/>
-
 		<div id="filters">
-
 			<?php
 			include '../../functions/filters.php';
 
@@ -42,60 +37,31 @@ Et ici aussi -->
 				echo "<img src='' class='image_filter' draggable='true' ondragstart='drag(event)' id=''/>";
 				echo "</div>";
 			}
-
 			?>
-
 
 		</div>
 		<img src="../../img/fleche-bas.png" id='fleche-bas' onclick='to_bot()'/>
 
-
+	</div>
+	<div id="move">
+		<br/>
+		<img src="../../img/plus.png" onclick='do_plus()'/>
+		<img src="../../img/moins.png" onclick="do_less()"/>
+		<img src="../../img/gauche.png" onclick="do_left()"/>
+		<img src="../../img/droite.png" onclick="do_right()"/>
+		<img src="../../img/haut.png" onclick="do_top()"/>
+		<img src="../../img/bas.png" onclick="do_bot()"/>
+		<img src="../../img/reset.png" onclick="do_reset()"/>
+		<br/>
 	</div>
 
-
-
-
-
 	<script src="filter-effects.js"></script>
-	<script>
-
-	function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.src);
-}
-
-var i = 0;
-
-function drop(ev) {
-
-	if (ev.target.nodeName != "img")
-	{
-		ev.preventDefault();
-
-		var data = ev.dataTransfer.getData("text");
-		var node = document.createElement("img");
-		console.log(node);
-		node.src = data;
-		node.setAttribute("class", "filter-on-image");
-		ev.target.appendChild(node);
-
-	}
-	i++;
-}
-
-
-
-
-
-	</script>
+	<script src="drag-and-drop.js"></script>
+	<script src="modify-filters.js"></script>
 
 <br/>
 <div id="buttons">
-	<button id="reset">Reset</button>
-
+	<button id="reset">Reset Caméra</button>
 	<button id="snap">Prendre la photo</button>
 	<button id="save">Sauvegarder</button>
 	<form method="post" accept-charset="utf-8" name="form1">
@@ -107,7 +73,6 @@ function drop(ev) {
 <br/><br/>
 <script src="camera_handle.js"></script>
 
-
 <p class='text'>Tu préfères uploader une image ?</p>
 <form method="post" action="reception.php" enctype="multipart/form-data">
 	<p class='text'>Fichier (Format jpg, jpeg et png, 2 Mo max) :</p><br />
@@ -116,31 +81,8 @@ function drop(ev) {
 	<input type="submit" name="submit" value="Envoyer" />
 
 	<?php
-
-	if ($_SESSION['send-image-error'] == "KO")
-	{
-		echo "<div id='inscription-ko'>Erreur lors du transfert du fichier</div>";
-		$_SESSION['send-image-error'] = NULL;
-	}
-	if ($_SESSION['send-image-size'] == "KO")
-	{
-		echo "<div id='inscription-ko'>Erreur : Ton fichier est trop volumineux</div>";
-		$_SESSION['send-image-size'] = NULL;
-	}
-	if ($_SESSION['send-image-extension'] == "KO")
-	{
-		echo "<div id='inscription-ko'>Erreur : L'extension est invalide</div>";
-		$_SESSION['send-image-extension'] = NULL;
-	}
-	if ($_SESSION['send-image-dimensions'] == "KO")
-	{
-		echo "<div id='inscription-ko'>Erreur : Dimensions invalides</div>";
-		$_SESSION['send-image-dimensions'] = NULL;
-	}
-
-
-
-
+	include '../../errors.php';
+	send_image_error();
 
 	?>
 

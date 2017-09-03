@@ -150,6 +150,29 @@ function delete_error_change_password()
 	$_SESSION['flag-password-changed'] = NULL;
 }
 
+function	send_image_error()
+{
+	if ($_SESSION['send-image-error'] == "KO")
+	{
+		echo "<div id='inscription-ko'>Erreur lors du transfert du fichier</div>";
+		$_SESSION['send-image-error'] = NULL;
+	}
+	if ($_SESSION['send-image-size'] == "KO")
+	{
+		echo "<div id='inscription-ko'>Erreur : Ton fichier est trop volumineux</div>";
+		$_SESSION['send-image-size'] = NULL;
+	}
+	if ($_SESSION['send-image-extension'] == "KO")
+	{
+		echo "<div id='inscription-ko'>Erreur : L'extension est invalide</div>";
+		$_SESSION['send-image-extension'] = NULL;
+	}
+	if ($_SESSION['send-image-dimensions'] == "KO")
+	{
+		echo "<div id='inscription-ko'>Erreur : Dimensions invalides</div>";
+		$_SESSION['send-image-dimensions'] = NULL;
+	}
+}
 
 
 

@@ -62,6 +62,10 @@ function	do_when_saving(){
 	reset_buttons();
 	var image_URL = send_image();
 	document.getElementById("photos").innerHTML += "<div class='photo'><img src='"+image_URL+"'></div>";
+	var snap = document.getElementById('snap');
+	snap.removeAttribute("onclick");
+	snap.style.backgroundColor = "#FFA69E";
+	snap.style.borderColor = "#FF686B";
 }
 
 var	reset = document.getElementById('reset');
@@ -70,4 +74,4 @@ reset.onclick = reset_buttons;
 var	save = document.getElementById('save');
 save.onclick = do_when_saving;
 
-document.getElementById("snap").addEventListener("click", disable_buttons);
+// document.getElementById("snap").addEventListener("click", disable_buttons);

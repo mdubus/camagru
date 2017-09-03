@@ -44,7 +44,7 @@ if ($_SESSION['send-image-extension'] != "KO")
 	{
 		echo "Transfert réussi !<br/>";
 		try{
-			$_SESSION['link'] = 'http://localhost:8080/camagru/img/galerie/'. $date_upload . $_SESSION['id'] . '.'. $extension_upload;
+			$_SESSION['link'] = '/img/galerie/'. $date_upload . $_SESSION['id'] . '.'. $extension_upload;
 			include '../../config/database.php';
 			$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

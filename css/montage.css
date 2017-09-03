@@ -6,12 +6,16 @@
 video{
 	width:100%;
 	height:auto;
+	position:absolute;
+	z-index:1;
 }
 
 #canvas{
 	width:100%;
 	height:auto;
 	display: none;
+	position:absolute;
+	z-index:2;
 }
 
 button{
@@ -26,6 +30,11 @@ button{
 	height: auto;
 }
 
+#snap{
+	background-color: #FFA69E;
+	border:2px solid #FF686B;
+}
+
 button{
 	display: inline;
 	margin: 0 auto;
@@ -33,6 +42,8 @@ button{
 
 #camera{
 	width:60%;
+	position:relative;
+	float:left;
 }
 
 #buttons{
@@ -75,12 +86,21 @@ button{
 
 }
 
-.filter-on-image{
-	width:20%;
-}
-
 #side{
 	display: flex;
 	width: 90%;
 	margin: auto;
+}
+
+#canva_filters{
+	width:100%;
+	position:absolute;
+	z-index:3;
+}
+
+#move{
+	width: 50vw;
+	justify-content: space-around;
+	margin: auto;
+	display: none;
 }

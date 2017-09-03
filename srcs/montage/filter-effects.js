@@ -17,6 +17,10 @@ function	to_bot()
 	var l = 0;
 	while (l < 5)
 	{
+		if (k <= 0)
+		{
+			k = img.length + j;
+		}
 		if (k >= img.length)
 		{
 			k = 0;
@@ -49,7 +53,6 @@ function	to_top()
 		{
 			k = 0;
 		}
-		// console.log(img[k].id);
 		filter[l].src = img[k].src;
 		filter[l].id = img[k].id;
 		l++;
