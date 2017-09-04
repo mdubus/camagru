@@ -75,9 +75,9 @@ function	do_when_saving(){
 	var image = canvas.toDataURL('image/png');
 	document.getElementById("photos").innerHTML += "<div class='photo'><img src='"+image+"'></div>";
 	var snap = document.getElementById('snap');
-	snap.removeAttribute("onclick");
-	snap.style.backgroundColor = "#FFA69E";
-	snap.style.borderColor = "#FF686B";
+	// snap.removeAttribute("onclick");
+	// snap.style.backgroundColor = "#FFA69E";
+	// snap.style.borderColor = "#FF686B";
 }
 
 var	reset = document.getElementById('reset');

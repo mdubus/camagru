@@ -1,17 +1,44 @@
 <?php
 session_start();
+
+function imagecopymerge_alpha($dst_im, $src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $pct){
+        $cut = imagecreatetruecolor($src_w, $src_h);
+        imagecopy($cut, $dst_im, 0, 0, $dst_x, $dst_y, $src_w, $src_h);
+        imagecopy($cut, $src_im, 0, 0, $src_x, $src_y, $src_w, $src_h);
+        imagecopymerge($dst_im, $cut, $dst_x, $dst_y, 0, 0, $src_w, $src_h, $pct);
+    }
+
 $upload_dir = "../../img/galerie/";
-if (isset($_POST['hidden_data']) && $_POST['hidden_data'] != NULL)
+if (isset($_POST['hidden_data']) && $_POST['hidden_data'] != NULL && isset($_POST['hidden_data2']) && $_POST['hidden_data2'] != NULL)
 {
 $img = $_POST['hidden_data'];
+$img2 = $_POST['hidden_data2'];
+
 $img = str_replace('data:image/png;base64,', '', $img);
+$img2 = str_replace('data:image/png;base64,', '', $img2);
+
 $img = str_replace(' ', '+', $img);
-$data = base64_decode($img);
+$img2 = str_replace(' ', '+', $img2);
+
+$img = base64_decode($img);
+$img2 = base64_decode($img2);
+
+$_SESSION['image1'] = $img;
+$_SESSION['image2'] = $img2;
+
+
 $filename = mktime() . $_SESSION['id'] . ".png";
+
+$img = imagecreatefromstring($img);
+$img2 = imagecreatefromstring($img2);
+
+imagecopymerge_alpha($img, $img2, 0, 0, 0, 0, 400, 300, 100);
+imagepng($img, "../../img/galerie/".$filename);
+
+
 $file = $upload_dir . $filename;
 $path = $file;
-$path_for_bdd = "/img/galerie/" . $filename;
-$success = file_put_contents($file, $data);
+$path_for_bdd = "img/galerie/" . $filename;
 $id = $_SESSION['id'];
 try{
 	$date_upload = time();

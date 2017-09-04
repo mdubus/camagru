@@ -43,6 +43,7 @@
 		<img src="../../img/fleche-bas.png" id='fleche-bas' onclick='to_bot()'/>
 
 	</div>
+
 	<div id="move">
 		<br/>
 		<img src="../../img/plus.png" onclick='do_plus()'/>
