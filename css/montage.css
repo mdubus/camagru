@@ -12,8 +12,6 @@ video{
 
 #canvas{
 	width:100%;
-	height:auto;
-	display: none;
 	position:absolute;
 	z-index:2;
 }

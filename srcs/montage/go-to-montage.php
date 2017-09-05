@@ -55,11 +55,6 @@
 		<img src="../../img/reset.png" onclick="do_reset()"/>
 		<br/>
 	</div>
-
-	<script src="filter-effects.js"></script>
-	<script src="drag-and-drop.js"></script>
-	<script src="modify-filters.js"></script>
-
 <br/>
 <div id="buttons">
 	<button id="reset">Reset Caméra</button>
@@ -73,21 +68,29 @@
 </div>
 
 <br/><br/>
-<script src="camera_handle.js"></script>
 
 <p class='text'>Tu préfères uploader une image ?</p>
 <form method="post" action="reception.php" enctype="multipart/form-data">
-	<p class='text'>Fichier (Format jpg, jpeg et png, 2 Mo max) :</p><br />
+	<p class='text'>Fichier (Format png uniquement, 2 Mo max) :</p><br />
 	<input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
 	<input type="file" name="image" id="image" /><br />
 	<input type="submit" name="submit" value="Envoyer" />
-
+</form>
 	<?php
 	include '../../errors.php';
 	send_image_error();
+	if ($_SESSION['print_file_uploaded'])
+	{
+		echo $_SESSION['print_file_uploaded'];
+		$_SESSION['print_file_uploaded'] = NULL;
+	}
 
 	?>
 
+		<script src="filter-effects.js"></script>
+		<script src="drag-and-drop.js"></script>
+		<script src="modify-filters.js"></script>
+		<script src="camera_handle.js"></script>
 
 
 	<br/><br/><div class="gallery" id="photos"></div>

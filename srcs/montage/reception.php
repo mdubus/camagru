@@ -19,7 +19,7 @@ if ($_SESSION['send-image-error'] != "KO")
 
 if ($_SESSION['send-image-size'] != "KO")
 {
-	$extensions = array('jpg', 'jpeg', 'png');
+	$extensions = array('png');
 	$extension_upload = strtolower(substr(strchr($_FILES['image']['name'], '.'), 1));
 	if (!(in_array($extension_upload, $extensions)))
 	{
@@ -61,6 +61,7 @@ if ($_SESSION['send-image-extension'] != "KO")
 			die();
 		}
 	}
+	$_SESSION['print_file_uploaded'] = "<img src='".$nom."' style='display:none;' id='uploaded_file' />";
 
 }
 
