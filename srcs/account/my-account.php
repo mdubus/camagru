@@ -115,10 +115,11 @@ echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
 		<br/>
 		<h3>Gérer mon compte</h3><br/>
 		<p class="text"><a href="change-password.php">Changer mon mot de passe</a></p>
-		<p class="text"><a href="suppress-account.php">Supprimer mon compte</a></p>
-
-
-		<?PHP
+		<?php
+		if ($_SESSION['groupe'] != 'admin')
+		{
+			echo '<p class="text"><a href="suppress-account.php">Supprimer mon compte</a></p>';
+		}
 			if ($_SESSION['wish-to-suppress-account'] == "OK")
 			{
 				echo "<p class='text'>Souhaites-tu vraiment supprimer ton compte ?</p>";
