@@ -30,6 +30,7 @@
 		include 'go-to-montage.php';
 	}
 	?>
+</div>
 </body>
 
 <?php

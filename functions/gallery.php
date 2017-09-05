@@ -56,4 +56,23 @@
 			die();
 		}
 	}
+
+	function	check_if_login_exists($login)
+	{
+		try{
+			include '../../config/database.php';
+			$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$bdd->query("USE camagru");
+			$requete = $bdd->prepare("SELECT * FROM `utilisateurs` WHERE `login` = :login");
+			$requete->bindParam(':login', $login);
+			$requete->execute();
+			$result = $requete->rowCount();
+			return ($result);
+		}
+		catch (PDOException $e) {
+			print "Erreur : ".$e->getMessage()."<br/>";
+			die();
+		}
+	}
  ?>
