@@ -18,3 +18,19 @@
 .gestion:hover{
 	border: 1px dashed #FF686B;
 }
+
+table{
+	width: 80vw;
+	/*text-align: center;*/
+	margin: auto;
+
+}
+td{
+	width: 20vw;
+	border: 1px solid #FFA69E;
+	font-size:1.5vw;
+	font-family: verdana;
+	padding: 1% 2%;
+	text-align: center;
+	/*border-collapse: collapse;*/
+}
