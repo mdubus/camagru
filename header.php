@@ -22,11 +22,7 @@ session_start();
 			echo "id='current'";
 		}
 		echo "href='/camagru/srcs/account/my-account.php'>Mon compte</a></li>";
-		echo "<li><a ";
-		if ($current_page == "montages-users"){
-			echo "id='current'";
-		}
-		echo "href='/camagru/srcs/montage/montages-users.php?login=" . $_SESSION['login'] . "'>Mes montages</a></li>";
+	
 		echo "<li><a ";
 		if ($current_page == "deconnexion"){
 			echo "id='current'";

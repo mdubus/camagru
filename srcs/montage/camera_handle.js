@@ -69,7 +69,22 @@ function	disable_buttons(){
 
 function	reset_buttons(){
 	document.getElementById('video').style.display = "initial";
-	document.getElementById('canvas').style.display = "none";
+	if (!imageuploaded)
+	{
+		document.getElementById('canvas').style.display = "none";
+	}
+	document.getElementById('reset').style.display = "none";
+	document.getElementById('snap').style.display = "initial";
+	document.getElementById('save').style.display = "none";
+}
+
+
+function	button_reset(){
+	document.getElementById('video').style.display = "initial";
+	if (imageuploaded)
+	{
+		document.getElementById('canvas').style.display = "none";
+	}
 	document.getElementById('reset').style.display = "none";
 	document.getElementById('snap').style.display = "initial";
 	document.getElementById('save').style.display = "none";
@@ -82,6 +97,13 @@ function	do_when_saving(){
 	context.drawImage(canvas2, 0, 0);
 	var image = canvas.toDataURL('image/png');
 	document.getElementById("photos").innerHTML += "<div class='photo'><img src='"+image+"'></div>";
+	if (imageuploaded)
+	{
+		var image = new Image();
+		image.src = imageuploaded.src;
+		context.drawImage(image, 0, 0, 400, 300);
+		// context.save;
+	}
 	// var snap = document.getElementById('snap');
 	// snap.removeAttribute("onclick");
 	// snap.style.backgroundColor = "#FFA69E";
@@ -89,7 +111,7 @@ function	do_when_saving(){
 }
 
 var	reset = document.getElementById('reset');
-reset.onclick = reset_buttons;
+reset.onclick = button_reset;
 
 var	save = document.getElementById('save');
 save.onclick = do_when_saving;
@@ -101,9 +123,9 @@ window.onload = function()
 		var image = new Image();
 		image.src = imageuploaded.src;
 		context.drawImage(image, 0, 0, 400, 300);
-		context.save;
+		// context.save;
 	}
 
 }
 
-// document.getElementById("snap").addEventListener("click", disable_buttons);
+document.getElementById("snap").addEventListener("click", disable_buttons);

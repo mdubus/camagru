@@ -57,7 +57,15 @@
 	</div>
 <br/>
 <div id="buttons">
-	<button id="reset">Reset Caméra</button>
+	<?php
+	if ($_SESSION['print_file_uploaded'])
+	{
+		echo "<button id='reset'>Mettre la caméra</button>";
+	}
+	else {
+		echo "<button id='reset'>Reset Caméra</button>";
+	}
+	?>
 	<button id="snap">Prendre la photo</button>
 	<button id="save">Sauvegarder</button>
 	<form method="post" accept-charset="utf-8" name="form1">

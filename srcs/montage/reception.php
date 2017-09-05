@@ -42,26 +42,27 @@ if ($_SESSION['send-image-extension'] != "KO")
 	$result = move_uploaded_file($_FILES['image']['tmp_name'], $nom);
 	if ($result)
 	{
-		echo "Transfert réussi !<br/>";
-		try{
-			$_SESSION['link'] = '/img/galerie/'. $date_upload . $_SESSION['id'] . '.'. $extension_upload;
-			include '../../config/database.php';
-			$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$bdd->query("USE camagru");
-			$requete = $bdd->prepare("INSERT INTO `photos` (`date_upload`, `link`, `id_user`)
-			VALUES(:date_upload, :link, :id_user)");
-			$requete->bindParam(':date_upload', $date_upload);
-			$requete->bindParam(':link', $_SESSION['link']);
-			$requete->bindValue(':id_user', $_SESSION['id']);
-			$requete->execute();
-		}
-		catch (PDOException $e) {
-			print "Erreur : ".$e->getMessage()."<br/>";
-			die();
-		}
+		$_SESSION['print_file_uploaded'] = "<img src='".$nom."' style='display:none;' id='uploaded_file' />";
+		
+		// echo "Transfert réussi !<br/>";
+		// try{
+		// 	$_SESSION['link'] = '/img/galerie/'. $date_upload . $_SESSION['id'] . '.'. $extension_upload;
+		// 	include '../../config/database.php';
+		// 	$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		// 	$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		// 	$bdd->query("USE camagru");
+		// 	$requete = $bdd->prepare("INSERT INTO `photos` (`date_upload`, `link`, `id_user`)
+		// 	VALUES(:date_upload, :link, :id_user)");
+		// 	$requete->bindParam(':date_upload', $date_upload);
+		// 	$requete->bindParam(':link', $_SESSION['link']);
+		// 	$requete->bindValue(':id_user', $_SESSION['id']);
+		// 	$requete->execute();
+		// }
+		// catch (PDOException $e) {
+		// 	print "Erreur : ".$e->getMessage()."<br/>";
+		// 	die();
+		// }
 	}
-	$_SESSION['print_file_uploaded'] = "<img src='".$nom."' style='display:none;' id='uploaded_file' />";
 
 }
 

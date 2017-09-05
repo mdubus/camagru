@@ -85,4 +85,6 @@ function	do_reset()
 		delete saved[j];
 	}
 	i = 0;
+	var move = document.getElementById('move');
+	move.style.display = 'none';
 }
