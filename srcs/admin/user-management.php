@@ -20,7 +20,7 @@ if ($_SESSION['groupe'] != 'admin')
 
 <body>
 	<?php
-	$current_page = "connexion";
+  	$current_page = "admin";
 	include '../../header.php';
 	include '../../functions/admin-users.php'
 	?>
@@ -56,9 +56,11 @@ if ($_SESSION['groupe'] != 'admin')
 			echo "</table>";
 		}
 		?>
-
-
 		<br/>
+
+
+
+
 	</div>
 </body>
 <?php
