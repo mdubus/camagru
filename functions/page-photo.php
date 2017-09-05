@@ -184,7 +184,7 @@ else {
 	{
 		// print_r ($data);
 
-		if ($data['login'] == $_SESSION['login'])
+		if ($data['login'] == $_SESSION['login'] || $_SESSION['groupe'] == 'admin')
 		{
 			echo "<div id='comment' onmouseover=\"getElementById('".$data['id_comment'];
 			echo "').style.display='block'\" onmouseout=\"getElementById('".$data['id_comment'];

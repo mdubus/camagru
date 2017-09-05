@@ -34,7 +34,7 @@ check_if_picture_exists($_GET['id_photo']);
 
 		echo "<p class='text' style='text-align:center;'>Photo de <a href='../montage/montages-users.php?login=".$data[0]['login']."'>".$data[0]['login']."</a></p>";
 		$result = picture_belong_to_user($_GET['id_photo']);
-		if ($result > 0)
+		if ($result > 0 || $_SESSION['groupe'] == 'admin')
 		{
 			echo "<a href='delete-picture.php?id-photo=".$_GET['id_photo']."' id='delete-picture' class='fake-link'>Supprimer cette photo</a><br/>";
 		}

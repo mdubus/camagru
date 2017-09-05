@@ -9,6 +9,7 @@ h1{
 	margin:0;
 	text-align:center;
 	margin-bottom:2%;
+	margin-top: 2%;
 }
 
 h1 a{
@@ -20,30 +21,35 @@ nav{
 	background-color: #FF686B;
 	color:white;
 	width:98vw;
-	height:auto;
-	margin: 1vw;
+	display: flex;
 	margin-bottom:5%;
+	justify-content: space-around;
+	flex-direction: row;
 }
 
-nav ul{
-	padding: 1vw 2vw;
+nav a:first-child{
+	margin-left: 10%;
+}
+
+nav a:last-child{
+	margin-right: 10%;
+}
+
+nav a{
 	text-align:center;
-}
-
-nav ul li{
+	height: auto;
 	font-size:1.5vw;
-	display: inline;
-	padding: inherit;
+	text-decoration: none;
+
+	padding: 2%;
 }
 
-nav ul li a{
-	text-decoration: none;
+nav a div{
 	color:white;
-	padding:inherit;
 	font-family: 'Open Sans', sans-serif;
 }
 
-nav ul li a:hover{
+nav a:hover{
 	background-color:#FFA69E;
 }
 

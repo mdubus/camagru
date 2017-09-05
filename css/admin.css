@@ -1,0 +1,20 @@
+.link-admin{
+	text-decoration: none;
+	color: #FF686B;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.7vw;
+}
+
+.gestion{
+	display: block;
+	border: 1px dashed #FFA69E;
+	width: 40vw;
+	text-align: center;
+	margin: auto;
+	margin-top: 3%;
+	padding: 1vw;
+}
+
+.gestion:hover{
+	border: 1px dashed #FF686B;
+}
