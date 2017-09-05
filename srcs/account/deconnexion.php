@@ -32,4 +32,5 @@ session_start();
 session_destroy();
 
 	echo "<meta http-equiv='refresh' content='5,url=../../index.php'>";
+	include '../../footer.php';
 ?>

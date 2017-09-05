@@ -44,4 +44,7 @@
     chocolate pie sweet roll. Sugar plum topping muffin.</p></div>
 
 </body>
+<?php
+include 'footer.php';
+ ?>
 </html>

@@ -8,7 +8,7 @@ session_start();
 <nav>
   <ul>
 
-	<li><a  <?PHP if ($current_page == "gallery"){echo "id='current'";}?>href='/camagru/srcs/gallery/gallery.php'>Galerie</a></li>
+	<li><a  <?PHP if ($current_page == "gallery"){echo "id='current'";}?>href='/camagru/srcs/gallery/gallery.php?page=1'>Galerie</a></li>
 	<?PHP
 	echo "<li><a ";
 	if ($current_page == "montages"){
@@ -22,7 +22,7 @@ session_start();
 			echo "id='current'";
 		}
 		echo "href='/camagru/srcs/account/my-account.php'>Mon compte</a></li>";
-	
+
 		echo "<li><a ";
 		if ($current_page == "deconnexion"){
 			echo "id='current'";

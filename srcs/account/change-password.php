@@ -75,4 +75,7 @@ if ($_SESSION['login'] == NULL || !($_SESSION['login']))
 
 	</div>
 </body>
+<?php
+include '../../footer.php';
+ ?>
 </html>

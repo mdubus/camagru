@@ -73,9 +73,12 @@ check_if_picture_exists($_GET['id_photo']);
 					put_comments($comments);
 				?>
 			</div>
+		</div>
 			<script src="photos_handle.js"></script>
 		</body>
 
-
+		<?php
+		include '../../footer.php';
+		 ?>
 
 		</html>

@@ -38,16 +38,7 @@ function	add_pictures($bdd)
 	INTO TABLE `photos`
 	FIELDS TERMINATED BY ','
 	LINES TERMINATED BY '\r\n'
-	IGNORE 1 LINES (link,id_user)");
-
-	$date_upload = time();
-	include '../config/database.php';
-	$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-	$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$bdd->query("USE camagru");
-	$requete = $bdd->prepare("UPDATE `photos` SET `date_upload` = :date_upload");
-	$requete->bindParam(':date_upload', $date_upload);
-	$requete->execute();
+	IGNORE 1 LINES (link,id_user,date_upload)");
 }
 
 function	create_likes_table($bdd)

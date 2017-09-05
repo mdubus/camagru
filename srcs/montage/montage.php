@@ -28,11 +28,12 @@
 	else {
 
 		include 'go-to-montage.php';
-
 	}
 	?>
 </body>
 
-
+<?php
+include '../../footer.php';
+ ?>
 
 </html>
