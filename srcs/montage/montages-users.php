@@ -41,7 +41,6 @@ include '../../header.php';
 					echo "</div>";
 				}
 				echo "</div>";
-				echo "<p class='text'><a href='../gallery/gallery.php'>Revenir à la galerie</a></p>";
 			}
 			?>
 	</div>

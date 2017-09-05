@@ -29,7 +29,7 @@
 		<div class='gestion-admin'>
 			<a href="user-management.php" class='link-admin'><div class='gestion'>Gérer les utilisateurs</div></a>
 			<a href="filters-management.php" class='link-admin'><div class='gestion'>Gérer les filtres</div></a>
-			<a href="#" class='link-admin'><div class='gestion'>Statistiques</div></a>
+			<a href="statistiques.php" class='link-admin'><div class='gestion'>Statistiques</div></a>
 		</div>
 
 <br/>
