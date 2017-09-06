@@ -27,8 +27,6 @@
 	<div class="center">
 		<h2>Connexion</h2><br/>
 
-		<p class="text">Cupcake ipsum dolor sit amet marzipan halvah pastry. Sesame snaps toffee sweet roll dragée carrot cake. Pastry sweet marzipan fruitcake cupcake danish gingerbread sweet jelly-o.</p><br/>
-
 		<form method="post" action="check-connexion.php">
 			<fieldset>
 				<legend>Je me connecte</legend><br/>

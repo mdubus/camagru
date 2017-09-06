@@ -24,6 +24,7 @@
 	{
 		echo "<p class='text' style='text-align:center;'>Cette page est réservée aux membres.</p>";
 		echo "<p class='text' style='text-align:center;'>Pour t'inscrire c'est <a href='../inscription/inscription.php'>par ici</a></p>";
+		echo "<p class='text' style='text-align:center;'>Pour te connecter c'est <a href='../connexion/connexion.php'>par là</a></p>";
 	}
 	else {
 

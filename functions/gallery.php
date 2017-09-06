@@ -75,4 +75,40 @@
 			die();
 		}
 	}
+
+	function	check_if_table_photos_exists()
+	{
+		try{
+			include '../../config/database.php';
+			$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$bdd->query("USE camagru");
+			$requete = $bdd->prepare("SHOW TABLES LIKE 'photos'");
+			$requete->execute();
+			$code = $requete->fetchAll(PDO::FETCH_ASSOC);
+			return ($code);
+		}
+		catch (PDOException $e) {
+			print "Erreur : ".$e->getMessage()."<br/>";
+			die();
+		}
+	}
+
+	function	check_if_database_exists()
+	{
+		include '../../config/database.php';
+		try {
+			$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+				$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		        $requete = $bdd->prepare("SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = :db_name");
+				$requete->bindParam(':db_name', $DB_NAME);
+				$requete->execute();
+				$code = $requete->fetchAll(PDO::FETCH_ASSOC);
+				return ($code);
+		    }
+			catch (PDOException $e) {
+				print "Erreur : ".$e->getMessage()."<br/>";
+				die();
+			}
+	}
  ?>

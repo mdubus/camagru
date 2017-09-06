@@ -28,9 +28,6 @@
 	<div class="center">
 		<h2>Inscription</h2><br/>
 
-		<p class="text">Cupcake ipsum dolor sit amet marzipan halvah pastry. Sesame snaps toffee sweet roll dragée carrot cake. Pastry sweet marzipan fruitcake cupcake danish gingerbread sweet jelly-o.</p>
-		<p class="text">Cake croissant muffin cupcake jelly beans liquorice carrot cake chocolate gingerbread. Macaroon sweet roll gummi bears. Pudding lemon drops tootsie roll caramels chocolate cake caramels.</p><br/>
-
 		<form method="post" action="check-inscription.php">
 			<fieldset>
 				<legend>Je m'inscris</legend><br/>
