@@ -8,8 +8,9 @@ if (isset($_GET['id-comment']) && $_GET['id-comment'] != NULL && is_numeric($_GE
 		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$bdd->query("USE camagru");
-		$requete = $bdd->prepare("SELECT `id_comment` FROM `comments` WHERE `id_comment` LIKE :id_comment");
+		$requete = $bdd->prepare("SELECT `id_comment` FROM `comments` WHERE `id_comment` LIKE :id_comment AND `id_user` LIKE :id_user");
 		$requete->bindParam(':id_comment', $_GET['id-comment']);
+		$requete->bindParam(':id_user', $_SESSION['id']);
 		$requete->execute();
 		$result = $requete->rowCount();
 		if ($result == 0)

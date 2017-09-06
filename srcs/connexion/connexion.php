@@ -1,7 +1,7 @@
 <?PHP session_start();
 	if ($_SESSION['login'])
 	{
-		echo "<meta http-equiv='refresh' content='0,url=../account/my-account.php'>";
+		header('Location: ../account/my-account.php');
 		exit();
 	}
 ?>

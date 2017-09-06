@@ -14,7 +14,7 @@ $bdd->query("CREATE TABLE IF NOT EXISTS utilisateurs (
 function	add_users($bdd)
 {
 $bdd->query("LOAD DATA INFILE '/Users/mdubus/http/MyWebSite/camagru/config/utilisateurs.csv'
-INTO TABLE `utilisateurs`
+IGNORE INTO TABLE `utilisateurs`
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES (login,mail,groupe,mdp,token)");

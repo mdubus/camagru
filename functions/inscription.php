@@ -24,7 +24,6 @@ function check_regex_mail($data)
 
 function check_regex_password($data, $flag)
 {
-	echo $data;
 	if (preg_match("/(?=.{6,})(?=.*\d)(?=.*[a-zA-Z])/", $data) != 1)
 	{
 		$_SESSION[$flag] = "KO";
@@ -93,11 +92,12 @@ function send_confirmation_mail($identifiant, $mail, $submit)
 	$name = "Camagru";
 	$message = "Cher " . $identifiant . ",\r\n\r\n" .
 	"Merci de t'être inscris sur Camagru.fr\r\n\r\n" .
-	"Tu peux dès à présent te connecter sur notre site\r\n\r\n" .
+	"Tu peux dès à présent te connecter sur notre site à l'adresse suivante : \r\n\r\n" .
+	"http://localhost:8080/camagru/srcs/connexion/connexion.php \r\n\r\n" .
 	"À bientôt !";
 	$from = 'From: Camagru';
 	$to = $mail;
-	$subject = 'Ton inscription sur camagru.fr';
+	$subject = mb_encode_mimeheader('Ton inscription sur camagru.fr', "UTF-8");
 	$body = "From: $name\r\nTo: $to\r\nMessage:\r\n\r\n$message";
 
 	if ($submit)

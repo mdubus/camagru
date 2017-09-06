@@ -3,20 +3,13 @@
 include "../../functions/connexion.php";
 include "../../functions/inscription.php";
 
-if (isset($_POST['mail']) && $_POST['mail'] != NULL && isset($_POST['password']) && $_POST['password'] != NULL)
+check_form('connexion', 'mail', $_POST['mail']);
+check_form('connexion', 'password', $_POST['password']);
+
+if ($_SESSION['connexion-mail'] == "OK" && $_SESSION['connexion-password'] == "OK")
 {
 	$mail = htmlentities($_POST['mail']);
 	$password = htmlentities($_POST['password']);
-
-	check_form('connexion', 'mail', $mail);
-	check_form('connexion', 'password', $password);
-}
-else {
-	echo "<meta http-equiv='refresh' content='0,url=connexion.php'>";
-	exit();
-}
-if ($_SESSION['connexion-mail'] == "OK" && $_SESSION['connexion-password'] == "OK")
-{
 	$return = check_exists_mail($mail);
 	if ($return > 0)
 	{
@@ -45,6 +38,8 @@ if ($_SESSION['connexion-mail'] == "OK" && $_SESSION['connexion-password'] == "O
 	}
 }
 else
-echo "<meta http-equiv='refresh' content='0,url=connexion.php'>";
-exit();
+{
+	echo "<meta http-equiv='refresh' content='0,url=connexion.php'>";
+	exit();
+}
 ?>

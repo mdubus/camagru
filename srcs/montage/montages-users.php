@@ -24,13 +24,13 @@ include '../../header.php';
 	<div class="center">
 
 			<?PHP
-			$exists_or_not = check_if_login_exists($_GET['login']);
+			$exists_or_not = check_if_login_exists(htmlentities($_GET['login']));
 			if ($exists_or_not == 0)
 			{
 				echo "<meta http-equiv='refresh' content='0,url=../gallery/gallery.php'>";
 			}
 			else {
-					$login = $_GET['login'];
+					$login = htmlentities($_GET['login']);
 					echo "<h2>Montages de ".$login."</h2><br/>";
 					echo '<div class="gallery">';
 					$data = get_gallery_user($login);

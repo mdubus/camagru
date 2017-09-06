@@ -1,6 +1,4 @@
 var video = document.getElementById('video');
-
-
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 	navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
 		video.src = window.URL.createObjectURL(stream);
@@ -24,15 +22,13 @@ else if(navigator.getUserMedia) { // Standard
 	}, errBack);
 }
 
+var	reset = document.getElementById('reset');
+var	save = document.getElementById('save');
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
-
 var canvas2 = document.getElementById('canva_filters');
 var context2 = canvas2.getContext('2d');
-
 var video = document.getElementById('video');
-var imageuploaded = document.getElementById('uploaded_file');
-
 var canvasURL;
 var canvasURL2;
 
@@ -40,22 +36,22 @@ function send_image()
 {
 	canvasURL = canvas.toDataURL('image/png');
 	document.getElementById('hidden_data').value = canvasURL;
-
 	canvasURL2 = canvas2.toDataURL('image/png');
 	document.getElementById('hidden_data2').value = canvasURL2;
-
 	var fd = new FormData(document.forms["form1"]);
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'save_data.php', true);
 	xhr.send(fd);
 }
 
-function	disable_buttons(){
+function	disable_buttons()
+{
 	document.getElementById('canvas').style.display = "initial";
 	document.getElementById('video').style.display = "none";
 	document.getElementById('reset').style.display = "initial";
 	document.getElementById('snap').style.display = "none";
 	document.getElementById('save').style.display = "initial";
+	var imageuploaded = document.getElementById('uploaded_file');
 	if (imageuploaded)
 	{
 		var image = new Image();
@@ -67,8 +63,10 @@ function	disable_buttons(){
 	}
 }
 
-function	reset_buttons(){
+function	reset_buttons()
+{
 	document.getElementById('video').style.display = "initial";
+	var imageuploaded = document.getElementById('uploaded_file');
 	if (!imageuploaded)
 	{
 		document.getElementById('canvas').style.display = "none";
@@ -79,53 +77,45 @@ function	reset_buttons(){
 }
 
 
-function	button_reset(){
+reset.onclick = function()
+{
 	document.getElementById('video').style.display = "initial";
+	document.getElementById('canvas').style.display = "none";
+	var imageuploaded = document.getElementById('uploaded_file');
 	if (imageuploaded)
 	{
-		document.getElementById('canvas').style.display = "none";
+		context.clearRect(0, 0, 400, 300);
+		var image = document.getElementById('uploaded_file');
+		image.parentNode.removeChild(image);
 	}
 	document.getElementById('reset').style.display = "none";
 	document.getElementById('snap').style.display = "initial";
 	document.getElementById('save').style.display = "none";
 }
 
-function	do_when_saving(){
+save.onclick = function(){
 	reset_buttons();
 	send_image();
-
 	context.drawImage(canvas2, 0, 0);
 	var image = canvas.toDataURL('image/png');
 	document.getElementById("photos").innerHTML += "<div class='photo'><img src='"+image+"'></div>";
+	var imageuploaded = document.getElementById('uploaded_file');
 	if (imageuploaded)
 	{
 		var image = new Image();
 		image.src = imageuploaded.src;
 		context.drawImage(image, 0, 0, 400, 300);
-		// context.save;
 	}
-	// var snap = document.getElementById('snap');
-	// snap.removeAttribute("onclick");
-	// snap.style.backgroundColor = "#FFA69E";
-	// snap.style.borderColor = "#FF686B";
 }
-
-var	reset = document.getElementById('reset');
-reset.onclick = button_reset;
-
-var	save = document.getElementById('save');
-save.onclick = do_when_saving;
 
 window.onload = function()
 {
+	var imageuploaded = document.getElementById('uploaded_file');
 	if (imageuploaded)
 	{
 		var image = new Image();
 		image.src = imageuploaded.src;
 		context.drawImage(image, 0, 0, 400, 300);
-		// context.save;
 	}
 
 }
-
-document.getElementById("snap").addEventListener("click", disable_buttons);

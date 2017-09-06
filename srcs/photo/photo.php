@@ -61,18 +61,21 @@ check_if_picture_exists($_GET['id_photo']);
 						<input name="hidden_data_photo" type="hidden"/>
 					</form>
 				</div>
-				<div id="post-comment">
-					<form method="post" action="post-comment.php">
-						<fieldset>
-							<legend>Poster un commentaire</legend>
-							<textarea  name="comment" maxlength="1000"></textarea>
-						</fieldset>
-						<input type="submit" name="submit" value="Envoyer"/>
-						<?PHP
+				<?PHP
+				if ($_SESSION['login'])
+				{
+				echo '<div id="post-comment">';
+					echo'<form method="post" action="post-comment.php">';
+						echo '<fieldset>';
+						echo '	<legend>Poster un commentaire</legend>';
+						echo '	<textarea  name="comment" maxlength="1000"></textarea>';
+						echo '</fieldset>';
+						echo '<input type="submit" name="submit" value="Envoyer"/>';
 						include '../../errors.php';
 						error_post_comment();
-						?>
-				</div>
+				echo '</div>';
+				}
+				?>
 			</div>
 			<div id="list-comments">
 				<?php

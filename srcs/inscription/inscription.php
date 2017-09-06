@@ -1,4 +1,11 @@
-<?PHP session_start();?>
+<?PHP session_start();
+	if ($_SESSION['id'])
+	{
+		header('Location: ../account/my-account.php');
+		exit();
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>

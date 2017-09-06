@@ -1,7 +1,5 @@
 <?PHP session_start();
 
-if (isset($_POST['mail']) && $_POST['mail'] != NULL)
-{
 	include "../../functions/reset-password.php";
 	include "../../functions/inscription.php";
 	include "../../functions/connexion.php";
@@ -39,14 +37,13 @@ if (isset($_POST['mail']) && $_POST['mail'] != NULL)
 			print "Erreur : ".$e->getMessage()."<br/>";
 			die();
 		}
+		echo "<meta http-equiv='refresh' content='0,url=reset-password.php'>";
 	}
-	echo "<meta http-equiv='refresh' content='0,url=reset-password.php'>";
+	else {
+		echo "<meta http-equiv='refresh' content='0,url=reset-password.php'>";
+		exit();
+	}
 
-}
-else {
-	echo "<meta http-equiv='refresh' content='0,url=reset-password.php'>";
-	exit();
-}
 
 
 ?>
