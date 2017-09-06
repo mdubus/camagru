@@ -1,6 +1,9 @@
 <?PHP session_start();
 if ($_SESSION['login'] == NULL || !($_SESSION['login']))
-echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
+{
+	echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
+	exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,11 +71,7 @@ echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
 					}
 				}
 			}
-
-
 			echo "</p><br/>";
-
-
 			echo '<p class="text"> Nombre de commentaires sur mes montages : ';
 			$nb_comments = get_nb_comments_user($_SESSION['id']);
 			echo $nb_comments;
@@ -90,7 +89,7 @@ echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
 				{
 					if ($elem['nb_comments'] == $max)
 					{
-					$array_comments[] = $elem;
+						$array_comments[] = $elem;
 					}
 				}
 				foreach ($array_comments as $photo_comment)
@@ -110,7 +109,6 @@ echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
 
 		}
 		echo "<br/>"
-
 		?>
 		<br/>
 		<h3>Gérer mon compte</h3><br/>
@@ -120,28 +118,25 @@ echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
 		{
 			echo '<p class="text"><a href="suppress-account.php">Supprimer mon compte</a></p>';
 		}
-			if ($_SESSION['wish-to-suppress-account'] == "OK")
-			{
-				echo "<p class='text'>Souhaites-tu vraiment supprimer ton compte ?</p>";
-				echo "<form method='post' action='suppress-account.php'>";
-				echo "<input type='submit' name='oui' value='Oui'/>\t";
-				echo "<input type='submit' name='non' value='Non'/><br/><br/>";
-				echo "</form><br/><br/>";
-			}
-			if ($_SESSION['session-destroy'] == "OK")
-			{
-				echo "<div id='inscription-ko'><p>Ton compte a bien été supprimé.</p>";
-				echo "<p>Tu vas être redirigé vers l'accueil dans 5 secondes.</p></div>";
-				session_destroy();
-				echo "<meta http-equiv='refresh' content='5,url=../../index.php'>";
-			}
-			?>
-
-
-
+		if ($_SESSION['wish-to-suppress-account'] == "OK")
+		{
+			echo "<p class='text'>Souhaites-tu vraiment supprimer ton compte ?</p>";
+			echo "<form method='post' action='suppress-account.php'>";
+			echo "<input type='submit' name='oui' value='Oui'/>\t";
+			echo "<input type='submit' name='non' value='Non'/><br/><br/>";
+			echo "</form><br/><br/>";
+		}
+		if ($_SESSION['session-destroy'] == "OK")
+		{
+			echo "<div id='inscription-ko'><p>Ton compte a bien été supprimé.</p>";
+			echo "<p>Tu vas être redirigé vers l'accueil dans 5 secondes.</p></div>";
+			session_destroy();
+			echo "<meta http-equiv='refresh' content='5,url=../../index.php'>";
+		}
+		?>
 	</div>
 </body>
 <?php
 include '../../footer.php';
- ?>
+?>
 </html>

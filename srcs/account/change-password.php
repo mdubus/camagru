@@ -3,6 +3,7 @@ session_start();
 if ($_SESSION['login'] == NULL || !($_SESSION['login']))
 {
 	echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
+	exit();
 }
 ?>
 

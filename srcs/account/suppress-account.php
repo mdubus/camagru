@@ -4,6 +4,7 @@ if ($_SESSION['wish-to-suppress-account'] != "OK")
 {
 	$_SESSION['wish-to-suppress-account'] = "OK";
 	echo "<meta http-equiv='refresh' content='0,url=my-account.php'>";
+	exit();
 }
 else {
 	if ($_POST['oui'] == "Oui")
@@ -37,20 +38,16 @@ else {
 		$_SESSION['session-destroy'] = "OK";
 		header('Location: my-account.php');
 		exit();
-
-
 	}
 	else if ($_POST['non'] == "Non")
 	{
 		$_SESSION['wish-to-suppress-account'] = NULL;
 		header('Location: my-account.php');
 		exit();
-
 	}
 	else {
 		header('Location: my-account.php');
 		exit();
-		
 	}
 }
 ?>

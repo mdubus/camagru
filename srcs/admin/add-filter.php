@@ -1,20 +1,31 @@
 <?php
 session_start();
 
-include '../../functions/admin-filters.php';
 
 if ($_SESSION['groupe'] != 'admin')
 {
 	echo "<meta http-equiv='refresh' content='0,url=../account/my-account.php'>";
-}
-
-if (isset($_POST['filter']) && $_POST['filter'] != NULL)
-{
-	add_filter($_POST['filter']);
-	echo "<meta http-equiv='refresh' content='0,url=filters-management.php'>";
+	exit();
 }
 else {
-	echo "<meta http-equiv='refresh' content='0,url=filters-management.php'>";
+	include '../../functions/admin-filters.php';
+	if (isset($_POST['filter']) && $_POST['filter'] != NULL)
+	{
+		$filter = htmlentities($_POST['filter']);
+		$exists = check_if_filter_exists($filter);
+		if ($exists == 0)
+		{
+			add_filter($filter);
+		}
+		else {
+			$_SESSION['filter-already-exists'] = "OK";
+		}
+		echo "<meta http-equiv='refresh' content='0,url=filters-management.php'>";
+	}
+	else {
+		echo "<meta http-equiv='refresh' content='0,url=filters-management.php'>";
 
+	}
 }
- ?>
+
+?>

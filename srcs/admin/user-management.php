@@ -2,6 +2,7 @@
 if ($_SESSION['groupe'] != 'admin')
 {
 	echo "<meta http-equiv='refresh' content='0,url=../account/my-account.php'>";
+	exit();
 }
 ?>
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ if ($_SESSION['groupe'] != 'admin')
 
 <body>
 	<?php
-  	$current_page = "admin";
+	$current_page = "admin";
 	include '../../header.php';
 	include '../../functions/admin-users.php'
 	?>
@@ -47,7 +48,7 @@ if ($_SESSION['groupe'] != 'admin')
 
 				if ($user['login'] != 'admin')
 				{
-				echo "<a href='suppress-user.php?id=".$user['id']."'>Supprimer</a>";
+					echo "<a href='suppress-user.php?id=".$user['id']."'>Supprimer</a>";
 				}
 				echo "</td>";
 
@@ -57,10 +58,6 @@ if ($_SESSION['groupe'] != 'admin')
 		}
 		?>
 		<br/>
-
-
-
-
 	</div>
 </body>
 <?php

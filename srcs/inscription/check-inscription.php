@@ -1,24 +1,28 @@
 <?PHP session_start();
 
-include "../../functions/inscription.php";
+if (isset($_POST['identifiant']) && $_POST['identifiant'] != NULL
+&& isset($_POST['mail']) && $_POST['mail'] != NULL
+&& isset($_POST['password1']) && $_POST['password1'] != NULL
+&& isset($_POST['password2']) && $_POST['password2'] != NULL)
+{
+	include "../../functions/inscription.php";
+	$identifiant = htmlentities($_POST['identifiant']);
+	$mail = htmlentities($_POST['mail']);
+	$password1 = htmlentities($_POST['password1']);
+	$password2 = htmlentities($_POST['password2']);
 
-$identifiant = htmlentities($_POST['identifiant']);
-$mail = htmlentities($_POST['mail']);
-$password1 = htmlentities($_POST['password1']);
-$password2 = htmlentities($_POST['password2']);
+	check_form("inscription", "identifiant", $identifiant);
+	check_form("inscription", "mail", $mail);
+	check_form("inscription", "password1", $password1);
+	check_form("inscription", "password2", $password2);
+	check_exists_username($identifiant);
+	check_regex_mail($mail);
+	$return = check_exists_mail($mail);
+	$_SESSION['flag-mail-exists'] = ($return > 0) ? "KO" : "OK";
 
-check_form("inscription", "identifiant", $identifiant);
-check_form("inscription", "mail", $mail);
-check_form("inscription", "password1", $password1);
-check_form("inscription", "password2", $password2);
-check_exists_username($identifiant);
-check_regex_mail($mail);
-$return = check_exists_mail($mail);
-$_SESSION['flag-mail-exists'] = ($return > 0) ? "KO" : "OK";
-
-check_regex_password($password1, "flag-regex-password");
-check_same_password($password1, $password2, "same-password");
-
+	check_regex_password($password1, "flag-regex-password");
+	check_same_password($password1, $password2, "same-password");
+}
 
 if ($_SESSION['inscription-identifiant'] == "OK" && $_SESSION['inscription-mail'] == "OK"
 && $_SESSION['inscription-password1'] == "OK" && $_SESSION['inscription-password2'] == "OK"
@@ -41,13 +45,17 @@ if ($_SESSION['inscription-identifiant'] == "OK" && $_SESSION['inscription-mail'
 		$requete->bindParam(':password', $password);
 		$requete->execute();
 
-		// send_confirmation_mail($identifiant, $mail, $_POST['submit']); // REMETTRE
+		// send_confirmation_mail($identifiant, $mail, $_POST['submit']);
 	}
 	catch (PDOException $e) {
 		print "Erreur : ".$e->getMessage()."<br/>";
 		die();
 	}
-}
+	echo "<meta http-equiv='refresh' content='0,url=inscription.php'>";
 
-echo "<meta http-equiv='refresh' content='0,url=inscription.php'>";
+}
+else {
+	echo "<meta http-equiv='refresh' content='0,url=inscription.php'>";
+	exit();
+}
 ?>

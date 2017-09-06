@@ -219,7 +219,7 @@ function	check_if_picture_exists($id)
 			$code = $requete->rowCount();
 			if ($code == 0)
 			{
-				header('Location: ../gallery/gallery.php');
+				echo "<meta http-equiv='refresh' content='0,url=../gallery/gallery.php'>";
 				exit();
 			}
 			else {
@@ -232,7 +232,7 @@ function	check_if_picture_exists($id)
 		}
 	}
 	else {
-		header('Location: ../gallery/gallery.php');
+		echo "<meta http-equiv='refresh' content='0,url=../gallery/gallery.php'>";
 		exit();
 	}
 }

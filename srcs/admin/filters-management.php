@@ -2,6 +2,7 @@
 if ($_SESSION['groupe'] != 'admin')
 {
 	echo "<meta http-equiv='refresh' content='0,url=../account/my-account.php'>";
+	exit();
 }
 ?>
 <!DOCTYPE html>
@@ -67,7 +68,13 @@ if ($_SESSION['groupe'] != 'admin')
 			<input type="submit" name="submit" value="Envoyer"/>
 
 		</form>
-
+		<?PHP
+		if ($_SESSION['filter-already-exists'] == "OK")
+		{
+			echo "<br/><div id='inscription-ko'>Erreur : Le filtre existe déjà !</div>";
+			$_SESSION['filter-already-exists'] = NULL;
+		}
+		?>
 	</div>
 </body>
 <?php

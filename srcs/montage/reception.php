@@ -3,10 +3,6 @@ session_start();
 if ($_FILES['image']['error'] > 0 || !(isset($_POST['submit'])) || !(isset($_FILES['image'])))
 {
 	$_SESSION['send-image-error'] = "KO";
-	// UPLOAD_ERR_NO_FILE : fichier manquant.
-	// UPLOAD_ERR_INI_SIZE : fichier dépassant la taille maximale autorisée par PHP.
-	// UPLOAD_ERR_FORM_SIZE : fichier dépassant la taille maximale autorisée par le formulaire.
-	// UPLOAD_ERR_PARTIAL : fichier transféré partiellement.
 }
 
 if ($_SESSION['send-image-error'] != "KO")

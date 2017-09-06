@@ -67,4 +67,46 @@ function	add_filter($filter)
 	}
 }
 
+function	check_if_filter_exists($filter)
+{
+	try{
+		$name = "img/filtres/".$filter.".png";
+		include '../../config/database.php';
+		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bdd->query("USE camagru");
+		$requete = $bdd->prepare("SELECT * FROM `filters` WHERE `path_filter` LIKE :name");
+		$requete->bindParam(':name', $name);
+		$requete->execute();
+		$result = $requete->rowCount();
+		return ($result);
+
+	}
+	catch (PDOException $e) {
+		print "Erreur : ".$e->getMessage()."<br/>";
+		die();
+	}
+}
+
+function	check_if_id_filter_exists($filter)
+{
+	try{
+		$name = "img/filtres/".$filter.".png";
+		include '../../config/database.php';
+		$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bdd->query("USE camagru");
+		$requete = $bdd->prepare("SELECT * FROM `filters` WHERE `id_filter` LIKE :filter");
+		$requete->bindParam(':filter', $filter);
+		$requete->execute();
+		$result = $requete->rowCount();
+		return ($result);
+
+	}
+	catch (PDOException $e) {
+		print "Erreur : ".$e->getMessage()."<br/>";
+		die();
+	}
+}
+
 ?>

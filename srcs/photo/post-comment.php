@@ -1,10 +1,10 @@
 <?php
 session_start();
-	include '../../functions/page-photo.php';
 
 if (isset($_POST['comment']) && $_POST['comment'] != NULL)
 {
-
+	include '../../functions/page-photo.php';
+	$comment = htmlentities($_POST['comment']);
 try{
 	include '../../config/database.php';
 	$bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
@@ -14,7 +14,7 @@ try{
 	VALUES (:id_user, :id_photo, :comments);");
 	$requete->bindParam(':id_photo', $_SESSION['id_photo']);
 	$requete->bindParam(':id_user', $_SESSION['id']);
-	$requete->bindParam(':comments', $_POST['comment']);
+	$requete->bindParam(':comments', $comment);
 	$requete->execute();
 
 	$_SESSION['comment-send'] = "OK";
@@ -33,6 +33,7 @@ catch (PDOException $e) {
 else {
 	echo "<meta http-equiv='refresh' content='0,url=photo.php?id_photo=".$_SESSION['id_photo']."'>";
 	$_SESSION['comment-send'] = "KO";
+	exit();
 
 }
 

@@ -70,6 +70,7 @@ if (isset($_GET['page']) && $_GET['page'] != NULL && is_numeric($_GET['page'])
 }
 else {
 	echo "<meta http-equiv='refresh' content='0,url=gallery.php?page=1'>";
+	exit();
 }
  ?>
 

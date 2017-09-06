@@ -33,6 +33,7 @@
 		<?PHP
 		include "../../errors.php";
 		error_reset_password();
+		delete_error_reset_password();
 		?>
 
 

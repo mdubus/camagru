@@ -4,6 +4,7 @@ session_start();
 if ($_SESSION['click-like'] != "OK")
 {
 	echo "<meta http-equiv='refresh' content='0,url=../../index.php'>";
+	exit();
 }
 else {
 	include '../../functions/page-photo.php';

@@ -44,7 +44,9 @@
 		include "../../errors.php";
 		error_reset_password();
 		if ($_SESSION['reinit-password-in-db'] == "OK")
+		{
 			echo "<meta http-equiv='refresh' content='5,url=../../index.php'>";
+		}
 		delete_error_reset_password();
 		?>
 

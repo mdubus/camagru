@@ -2,6 +2,7 @@
 if ($_SESSION['groupe'] != 'admin')
 {
 	echo "<meta http-equiv='refresh' content='0,url=../account/my-account.php'>";
+	exit();
 }
 ?>
 <!DOCTYPE html>
