@@ -4,9 +4,33 @@ Camagru is an Instagram-like website. It allows you to take pictures with your w
 
 ## Installation
 
-load camagru/config/setup.php
+Go to :
+`camagru/config/setup.php`
 Enjoy !
+
+## Constraint
+Make a securized website (no XSS, no SQL Injection, ...)
 
 ## Website overview
 
-![alt text](https://github.com/mdubus/fractol/blob/master/img/mandelbrot%20smooth%20blue.png)
+### Homepage
+![alt text](https://github.com/mdubus/camagru/blob/master/website-overview/accueil.png)
+
+### Gallery
+![alt text](https://github.com/mdubus/camagru/blob/master/website-overview/galerie.png)
+
+### Take pictures
+![alt text](https://github.com/mdubus/camagru/blob/master/website-overview/montages.png)
+
+### User gallery
+![alt text](https://github.com/mdubus/camagru/blob/master/website-overview/montages-utilisateurs.png)
+
+### Picture page
+![alt text](https://github.com/mdubus/camagru/blob/master/website-overview/page-photo.png)
+
+### Admin account with statistics
+![alt text](https://github.com/mdubus/camagru/blob/master/website-overview/statistiques.png)
+
+## Final Mark
+
+`125 / 100 (Full bonus)`
