@@ -35,4 +35,4 @@ Make a securized website (no XSS, no SQL Injection, ...)
 
 ## Final Mark
 
-`125 / 100 (Full bonus)`
+`125 / 100 (full bonus)`
